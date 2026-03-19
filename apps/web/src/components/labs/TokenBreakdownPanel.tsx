@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import type { TokenBreakdown } from '@insidellm/shared'
 
 import sampleTexts from '@/content/samples/token-samples.json'
-import { Badge } from '@/components/ui/badge'
 import { Card } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { formatRatio } from '@/lib/utils'
@@ -48,7 +47,6 @@ function TokenChips({ encoding, text }: { encoding: 'cl100k_base' | 'o200k_base'
             {formatRatio(breakdown.charTokenRatio)}
           </div>
         </div>
-        <Badge>{encoding === 'cl100k_base' ? 'GPT-4 时代常见' : '较新编码更紧凑'}</Badge>
       </div>
 
       <div className="rounded-2xl border border-cyan-100 bg-cyan-50/70 p-4 text-sm text-slate-700">
@@ -104,11 +102,7 @@ export function TokenBreakdownPanel({
     <section className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
       <Card className="space-y-5">
         <div className="space-y-2">
-          <Badge>文本 {'->'} token</Badge>
-          <h2 className="text-2xl font-semibold text-slate-900">把一句话拆成模型实际读取的小块</h2>
-          <p className="text-sm leading-6 text-slate-600">
-            你可以输入中文、英文、emoji 或代码片段，然后实时对比不同 encoding 的切分结果。
-          </p>
+          <h2 className="text-2xl font-semibold text-slate-900">文本拆分</h2>
         </div>
 
         <textarea
@@ -128,11 +122,6 @@ export function TokenBreakdownPanel({
               {sample.label}
             </button>
           ))}
-        </div>
-
-        <div className="rounded-3xl border border-cyan-200 bg-cyan-50 p-4 text-sm text-cyan-700">
-          重点不是下结论说“新模型永远 token 更少”，而是让用户亲眼看到：不同
-          tokenizer 会让同一段中文呈现不同的切分粒度和成本体验。
         </div>
       </Card>
 

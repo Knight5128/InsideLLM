@@ -30,14 +30,11 @@ export function ModelEvolutionTimeline() {
       <Card className="space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <Badge>模型演化时间轴</Badge>
-            <h2 className="mt-2 text-3xl font-semibold text-slate-900">
+            <h2 className="text-3xl font-semibold text-slate-900">
               {vendorInfo?.name ?? vendor} 的 tokenizer / embedding 演化脉络
             </h2>
           </div>
-          <Badge>{vendorInfo?.summary}</Badge>
         </div>
-        <p className="max-w-3xl text-sm leading-6 text-slate-600">{vendorInfo?.detail}</p>
       </Card>
 
       <div className="relative space-y-4 before:absolute before:left-5 before:top-4 before:h-[calc(100%-2rem)] before:w-px before:bg-cyan-200">
@@ -47,7 +44,6 @@ export function ModelEvolutionTimeline() {
             <div className="flex flex-wrap items-center gap-2">
               <Badge>{event.date}</Badge>
               <Badge>{laneLabel[event.lane]}</Badge>
-              <Badge>{event.confidence.sourceType}</Badge>
             </div>
             <div>
               <h3 className="text-xl font-semibold text-slate-900">{event.title}</h3>

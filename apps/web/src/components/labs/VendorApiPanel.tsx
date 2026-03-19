@@ -1,6 +1,5 @@
 import { useMemo, useState } from 'react'
 
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
@@ -113,47 +112,17 @@ export function VendorApiPanel({ text }: VendorApiPanelProps) {
   if (!runtimeConfig.enableRealApiLab) {
     return (
       <Card className="space-y-3">
-        <Badge>真实 API 实验区已关闭</Badge>
-        <p className="text-sm leading-6 text-slate-600">
-          你可以在 `conf.yaml` 中把 `public.enableRealApiLab` 设为 `true` 来重新启用。
-        </p>
+        <h2 className="text-2xl font-semibold text-slate-900">真实 API 实验区已关闭</h2>
+        <p className="text-sm leading-6 text-slate-600">在 `conf.yaml` 中将 `public.enableRealApiLab` 设为 `true` 可重新启用。</p>
       </Card>
     )
   }
 
   return (
     <section className="space-y-4">
-      <div className="grid gap-4 lg:grid-cols-3">
-        <Card className="space-y-3">
-          <Badge>OpenAI</Badge>
-          <h3 className="text-xl font-semibold text-slate-900">本地 tokenizer 对比</h3>
-          <p className="text-sm leading-6 text-slate-600">
-            `cl100k_base` 和 `o200k_base` 在前端本地计算，适合即时对比中文切分效率。
-          </p>
-        </Card>
-        <Card className="space-y-3">
-          <Badge>Google Gemini</Badge>
-          <h3 className="text-xl font-semibold text-slate-900">真实 token counting / listing</h3>
-          <p className="text-sm leading-6 text-slate-600">
-            通过 Worker 调用 Gemini 官方接口，展示真实 token 数和 token 列表。
-          </p>
-        </Card>
-        <Card className="space-y-3">
-          <Badge>Anthropic Claude</Badge>
-          <h3 className="text-xl font-semibold text-slate-900">真实 token counting</h3>
-          <p className="text-sm leading-6 text-slate-600">
-            通过 Worker 调用 Anthropic token counting，用于解释上下文成本估算。
-          </p>
-        </Card>
-      </div>
-
       <Card className="space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <Badge>真实 API 实验台</Badge>
-            <h3 className="mt-2 text-2xl font-semibold text-slate-900">直接测量官方接口返回的 token 结果</h3>
-          </div>
-          <div className="text-sm text-slate-500">Worker: {runtimeConfig.workerBaseUrl}</div>
+          <h3 className="text-2xl font-semibold text-slate-900">真实 API 对比</h3>
         </div>
 
         {error ? (

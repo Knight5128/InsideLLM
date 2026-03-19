@@ -37,7 +37,6 @@ export function EntryCards() {
               </div>
               <div>
                 <h3 className="text-xl font-semibold text-slate-900">{entry.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-600">{entry.body}</p>
               </div>
               <div className="flex items-center gap-2 text-sm text-cyan-700">
                 进入模块

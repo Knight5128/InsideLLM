@@ -1,6 +1,5 @@
 import { Outlet } from 'react-router-dom'
 
-import { SiteFooter } from '@/components/layout/SiteFooter'
 import { SiteHeader } from '@/components/layout/SiteHeader'
 
 export function SiteLayout() {
@@ -13,7 +12,6 @@ export function SiteLayout() {
       <main className="relative mx-auto flex max-w-7xl flex-col gap-12 px-6 py-8">
         <Outlet />
       </main>
-      <SiteFooter />
     </div>
   )
 }

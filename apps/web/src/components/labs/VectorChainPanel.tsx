@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import type { TokenBreakdown } from '@insidellm/shared'
 
 import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
 import { tokenizeText } from '@/lib/tokenizer/tokenize'
 
 const gridPositions = [
@@ -38,11 +37,7 @@ export function VectorChainPanel({ text }: { text: string }) {
   return (
     <section className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
       <Card className="space-y-4">
-        <Badge>token {'->'} 向量</Badge>
-        <h2 className="text-2xl font-semibold text-slate-900">从查表到上下文化</h2>
-        <p className="text-sm leading-6 text-slate-600">
-          同一个 token 先从词表中拿到初始向量，然后在 Transformer 中根据上下文产生漂移。
-        </p>
+        <h2 className="text-2xl font-semibold text-slate-900">token 到向量</h2>
         <div className="space-y-3">
           {visibleChunks.map((chunk, index) => (
             <div key={chunk.id} className="rounded-2xl border border-cyan-100 bg-cyan-50/55 p-4">
@@ -68,10 +63,8 @@ export function VectorChainPanel({ text }: { text: string }) {
       <Card className="space-y-4">
         <div className="flex items-center justify-between gap-3">
           <div>
-            <div className="text-sm text-slate-500">2D 教学投影</div>
-            <h3 className="text-xl font-semibold text-slate-900">初始向量与上下文化后的语义位置</h3>
+            <h3 className="text-xl font-semibold text-slate-900">向量位置变化</h3>
           </div>
-          <Badge>教学抽象</Badge>
         </div>
 
         <svg className="h-[26rem] w-full rounded-3xl border border-cyan-100 bg-[radial-gradient(circle_at_top,_rgba(165,243,252,0.55),_transparent_35%),linear-gradient(180deg,_#ffffff_0%,_#ecfeff_100%)]" viewBox="0 0 100 100">

@@ -2,7 +2,6 @@ import { useMemo, useState } from 'react'
 import type { ProjectionPoint } from '@insidellm/shared'
 
 import rawPoints from '@/content/samples/projection-points.json'
-import { Badge } from '@/components/ui/badge'
 import { Card } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { normalizeProjection } from '@/lib/projection/embeddingProjection'
@@ -26,13 +25,7 @@ export function EmbeddingSpaceExplorer() {
   return (
     <section className="grid gap-6 xl:grid-cols-[0.88fr_1.12fr]">
       <Card className="space-y-4">
-        <div className="flex items-center justify-between gap-3">
-          <div>
-            <Badge>Embedding 训练过程</Badge>
-            <h2 className="mt-2 text-2xl font-semibold text-slate-900">语义磁场如何慢慢形成</h2>
-          </div>
-          <Badge>教学抽象</Badge>
-        </div>
+        <h2 className="text-2xl font-semibold text-slate-900">语义空间形成过程</h2>
 
         <div className="space-y-3">
           {[
@@ -52,10 +45,6 @@ export function EmbeddingSpaceExplorer() {
               <p className="mt-2 text-sm text-slate-600">{body}</p>
             </div>
           ))}
-        </div>
-
-        <div className="rounded-3xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700">
-          这里展示的是通用 embedding 学习逻辑示意，不代表任何一家厂商完整公开的真实内部训练流水线。
         </div>
       </Card>
 

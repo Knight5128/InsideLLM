@@ -4,9 +4,12 @@ coverage
 .wrangler
 .DS_Store
 *.log
+conf.yaml
+conf.yaml.backup
 docs/**
 apps/web/node_modules
 apps/web/dist
 apps/worker/node_modules
 apps/worker/dist
+apps/worker/.dev.vars
 packages/shared/node_modules

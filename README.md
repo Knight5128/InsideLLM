@@ -149,6 +149,31 @@ corepack pnpm build
 
 前端不会直接暴露这些密钥，所有第三方请求都应通过 Worker 代理。
 
+## 统一配置中心
+
+项目根目录提供两份配置文件：
+
+- `conf.yaml`
+- `conf.yaml.backup`
+
+它们的职责如下：
+
+- `conf.yaml`：本地真实运行配置，可以填写真实 API Key
+- `conf.yaml.backup`：安全模板备份，用于恢复和参考
+
+项目脚本会优先读取 `conf.yaml`，并自动完成两件事：
+
+1. 将公开配置注入前端运行时，例如 Worker 地址和默认模型名
+2. 将密钥同步到 `apps/worker/.dev.vars`，供 Wrangler 本地开发使用
+
+如果你修改了 `conf.yaml`，可以手动执行：
+
+```bash
+corepack pnpm sync:conf
+```
+
+如果 `conf.yaml` 意外损坏，可以用 `conf.yaml.backup` 重新恢复一份再填写真实密钥。
+
 ## 设计原则
 
 - 面向非技术用户，优先保证“能看懂”

@@ -1,7 +1,7 @@
 import { handleTokenCount } from './routes/token-count'
 import { handleTokenList } from './routes/token-list'
 import { handleVendorMeta } from './routes/vendor-meta'
-import { json } from './utils/json'
+import { corsPreflight, json } from './utils/json'
 import type { Env } from './utils/schema'
 
 export default {
@@ -9,6 +9,10 @@ export default {
     const url = new URL(request.url)
 
     try {
+      if (request.method === 'OPTIONS') {
+        return corsPreflight()
+      }
+
       if (request.method === 'GET' && url.pathname === '/') {
         return json({
           app: env.APP_NAME,

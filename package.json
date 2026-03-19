@@ -3,10 +3,14 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
-    "dev:web": "corepack pnpm --filter @insidellm/web dev",
-    "dev:worker": "corepack pnpm --filter @insidellm/worker dev",
-    "build": "corepack pnpm -r build",
+    "sync:conf": "node ./scripts/sync-conf.mjs",
+    "dev:web": "node ./scripts/sync-conf.mjs && corepack pnpm --filter @insidellm/web dev",
+    "dev:worker": "node ./scripts/sync-conf.mjs && corepack pnpm --filter @insidellm/worker dev",
+    "build": "node ./scripts/sync-conf.mjs && corepack pnpm -r build",
     "lint": "corepack pnpm -r lint",
     "check": "corepack pnpm -r check"
+  },
+  "devDependencies": {
+    "yaml": "^2.8.2"
   }
 }

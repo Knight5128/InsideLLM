@@ -23,7 +23,7 @@ export function TokenLabPage() {
 
       <TokenBreakdownPanel onTextChange={setText} text={text} />
       <VectorChainPanel text={text} />
-      <VendorApiPanel />
+      <VendorApiPanel text={text} />
     </div>
   )
 }

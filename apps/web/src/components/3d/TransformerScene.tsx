@@ -22,28 +22,28 @@ function SceneBody({ detailMode }: TransformerSceneProps) {
       {
         id: 'input',
         label: 'Input Text',
-        color: '#38bdf8',
+        color: '#dbeafe',
         x: -5.2,
         detail: '原始字符序列进入 tokenizer 之前，只是人类可读文本。',
       },
       {
         id: 'tokenizer',
         label: 'Tokenizer',
-        color: '#8b5cf6',
+        color: '#e0f2fe',
         x: -3.2,
         detail: '把文本切成 token，并映射成离散 token IDs。',
       },
       {
         id: 'embedding',
         label: 'Embedding',
-        color: '#c084fc',
+        color: '#f1f5f9',
         x: -1.2,
         detail: '每个 token 从词表中查表拿到初始向量，再叠加位置信息。',
       },
       {
         id: 'blocks',
         label: detailMode === 'basic' ? 'Transformer Blocks' : 'Attention + MLP + Residual',
-        color: '#22c55e',
+        color: '#dbeafe',
         x: 1.6,
         detail:
           detailMode === 'basic'
@@ -53,7 +53,7 @@ function SceneBody({ detailMode }: TransformerSceneProps) {
       {
         id: 'output',
         label: 'Output Head',
-        color: '#f97316',
+        color: '#e2e8f0',
         x: 4.4,
         detail: '输出头把最终隐藏状态映射到下一个 token 的预测分布。',
       },
@@ -76,16 +76,16 @@ function SceneBody({ detailMode }: TransformerSceneProps) {
           >
             <meshStandardMaterial color={node.color} emissive={node.color} emissiveIntensity={0.28} />
           </RoundedBox>
-          <Text color="#fff" fontSize={0.18} maxWidth={1.2} position={[0, 0, 0.5]}>
+          <Text color="#0f172a" fontSize={0.18} maxWidth={1.2} position={[0, 0, 0.5]}>
             {node.label}
           </Text>
         </group>
       ))}
       <Html position={[0, -2.4, 0]} transform>
-        <div className="w-72 rounded-2xl border border-white/10 bg-slate-950/85 p-4 text-white shadow-2xl">
-          <div className="text-xs uppercase tracking-[0.2em] text-violet-200">点击组件查看解释</div>
+        <div className="glass-panel w-72 rounded-2xl p-4 text-slate-700">
+          <div className="text-xs uppercase tracking-[0.2em] text-slate-500">点击组件查看解释</div>
           <div className="mt-2 text-lg font-semibold">{selected.label}</div>
-          <p className="mt-2 text-sm text-slate-300">{selected.detail}</p>
+          <p className="mt-2 text-sm text-slate-600">{selected.detail}</p>
         </div>
       </Html>
     </>
@@ -94,11 +94,11 @@ function SceneBody({ detailMode }: TransformerSceneProps) {
 
 export function TransformerScene({ detailMode }: TransformerSceneProps) {
   return (
-    <div className="h-[30rem] overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950/60">
+    <div className="glass-panel glass-panel-strong h-[30rem] overflow-hidden rounded-[2rem]">
       <Canvas camera={{ position: [0, 0.8, 10], fov: 42 }}>
-        <color attach="background" args={['#020617']} />
-        <ambientLight intensity={0.9} />
-        <spotLight angle={0.4} intensity={2} penumbra={1} position={[6, 8, 6]} />
+        <color attach="background" args={['#f9fdff']} />
+        <ambientLight intensity={1.2} />
+        <spotLight angle={0.4} intensity={1.7} penumbra={1} position={[6, 8, 6]} />
         <SceneBody detailMode={detailMode} />
         <OrbitControls enablePan={false} />
       </Canvas>

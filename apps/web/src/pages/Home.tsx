@@ -16,10 +16,10 @@ export function HomePage() {
         {vendors.map((vendor) => (
           <Card key={vendor.id} className="space-y-3">
             <Badge>{vendor.name}</Badge>
-            <h2 className="text-2xl font-semibold text-white">{vendor.summary}</h2>
-            <p className="text-sm leading-6 text-slate-300">{vendor.detail}</p>
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-slate-300">
-              <div className="font-medium text-white">可信度标签</div>
+            <h2 className="text-2xl font-semibold text-slate-900">{vendor.summary}</h2>
+            <p className="text-sm leading-6 text-slate-600">{vendor.detail}</p>
+            <div className="rounded-2xl border border-cyan-100 bg-cyan-50/55 p-4 text-sm text-slate-600">
+              <div className="font-medium text-slate-900">可信度标签</div>
               {vendor.confidence.sourceType} / {vendor.confidence.confidenceLevel}
             </div>
           </Card>

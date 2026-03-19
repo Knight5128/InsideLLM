@@ -39,26 +39,26 @@ export function VectorChainPanel({ text }: { text: string }) {
     <section className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
       <Card className="space-y-4">
         <Badge>token {'->'} 向量</Badge>
-        <h2 className="text-2xl font-semibold text-white">从查表到上下文化</h2>
-        <p className="text-sm leading-6 text-slate-300">
+        <h2 className="text-2xl font-semibold text-slate-900">从查表到上下文化</h2>
+        <p className="text-sm leading-6 text-slate-600">
           同一个 token 先从词表中拿到初始向量，然后在 Transformer 中根据上下文产生漂移。
         </p>
         <div className="space-y-3">
           {visibleChunks.map((chunk, index) => (
-            <div key={chunk.id} className="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <div key={chunk.id} className="rounded-2xl border border-cyan-100 bg-cyan-50/55 p-4">
               <div className="flex items-center justify-between gap-3">
                 <div>
-                  <div className="text-sm text-slate-400">token #{chunk.tokenId}</div>
-                  <div className="text-lg font-semibold text-white">
+                  <div className="text-sm text-slate-500">token #{chunk.tokenId}</div>
+                  <div className="text-lg font-semibold text-slate-900">
                     {chunk.text.replaceAll(' ', '␠').replaceAll('\n', '↵')}
                   </div>
                 </div>
-                <div className="text-xs text-slate-400">lookup {'->'} contextualize</div>
+                <div className="text-xs text-slate-500">lookup {'->'} contextualize</div>
               </div>
-              <div className="mt-3 flex items-center gap-3 text-xs text-slate-300">
-                <span className="rounded-full bg-slate-800 px-3 py-1">初始向量 #{index + 1}</span>
+              <div className="mt-3 flex items-center gap-3 text-xs text-slate-600">
+                <span className="rounded-full bg-cyan-100 px-3 py-1 text-cyan-700">初始向量 #{index + 1}</span>
                 <span>→</span>
-                <span className="rounded-full bg-violet-500/20 px-3 py-1">受上下文影响后发生漂移</span>
+                <span className="rounded-full bg-teal-100 px-3 py-1 text-teal-700">受上下文影响后发生漂移</span>
               </div>
             </div>
           ))}
@@ -68,17 +68,17 @@ export function VectorChainPanel({ text }: { text: string }) {
       <Card className="space-y-4">
         <div className="flex items-center justify-between gap-3">
           <div>
-            <div className="text-sm text-slate-400">2D 教学投影</div>
-            <h3 className="text-xl font-semibold text-white">初始向量与上下文化后的语义位置</h3>
+            <div className="text-sm text-slate-500">2D 教学投影</div>
+            <h3 className="text-xl font-semibold text-slate-900">初始向量与上下文化后的语义位置</h3>
           </div>
           <Badge>教学抽象</Badge>
         </div>
 
-        <svg className="h-[26rem] w-full rounded-3xl border border-white/10 bg-[radial-gradient(circle_at_top,_rgba(124,58,237,0.2),_transparent_35%),#020617]" viewBox="0 0 100 100">
+        <svg className="h-[26rem] w-full rounded-3xl border border-cyan-100 bg-[radial-gradient(circle_at_top,_rgba(165,243,252,0.55),_transparent_35%),linear-gradient(180deg,_#ffffff_0%,_#ecfeff_100%)]" viewBox="0 0 100 100">
           <defs>
             <linearGradient id="vector-flow" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#38bdf8" />
-              <stop offset="100%" stopColor="#c084fc" />
+              <stop offset="0%" stopColor="#22d3ee" />
+              <stop offset="100%" stopColor="#2dd4bf" />
             </linearGradient>
           </defs>
           {visibleChunks.map((chunk, index) => {
@@ -90,12 +90,12 @@ export function VectorChainPanel({ text }: { text: string }) {
 
             return (
               <g key={chunk.id}>
-                <circle cx={start.x} cy={start.y} fill="#1e293b" r="2.6" stroke="#94a3b8" />
+                <circle cx={start.x} cy={start.y} fill="#cffafe" r="2.6" stroke="#67e8f9" />
                 <motion.circle
                   animate={{ cx: end.x, cy: end.y }}
                   cx={start.x}
                   cy={start.y}
-                  fill="#c084fc"
+                  fill="#2dd4bf"
                   r="2.8"
                   transition={{ duration: 1.6, repeat: Number.POSITIVE_INFINITY, repeatType: 'reverse', delay: index * 0.08 }}
                 />
@@ -108,7 +108,7 @@ export function VectorChainPanel({ text }: { text: string }) {
                   y1={start.y}
                   y2={end.y}
                 />
-                <text fill="#e2e8f0" fontSize="3" x={end.x + 1.8} y={end.y - 1}>
+                <text fill="#155e75" fontSize="3" x={end.x + 1.8} y={end.y - 1}>
                   {chunk.text.trim() || 'space'}
                 </text>
               </g>

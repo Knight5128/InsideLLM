@@ -19,7 +19,7 @@ const TimelinePage = lazy(() =>
 
 function PageFallback() {
   return (
-    <div className="rounded-3xl border border-white/10 bg-slate-950/60 p-8 text-sm text-slate-300">
+    <div className="rounded-3xl border border-cyan-100 bg-white/80 p-8 text-sm text-slate-600">
       正在加载可视化场景...
     </div>
   )

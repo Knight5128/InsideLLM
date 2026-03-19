@@ -30,8 +30,8 @@ function TokenChips({ encoding, text }: { encoding: 'cl100k_base' | 'o200k_base'
   if (!breakdown) {
     return (
       <Card className="space-y-4">
-        <div className="text-lg font-semibold text-white">{encoding}</div>
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-slate-300">
+        <div className="text-lg font-semibold text-slate-900">{encoding}</div>
+        <div className="rounded-2xl border border-cyan-100 bg-cyan-50/60 p-4 text-sm text-slate-600">
           正在加载 tokenizer...
         </div>
       </Card>
@@ -42,8 +42,8 @@ function TokenChips({ encoding, text }: { encoding: 'cl100k_base' | 'o200k_base'
     <Card className="space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div>
-          <div className="text-lg font-semibold text-white">{encoding}</div>
-          <div className="text-sm text-slate-400">
+          <div className="text-lg font-semibold text-slate-900">{encoding}</div>
+          <div className="text-sm text-slate-500">
             字符 {breakdown.charCount} / token {breakdown.tokenCount} / 比值{' '}
             {formatRatio(breakdown.charTokenRatio)}
           </div>
@@ -51,34 +51,34 @@ function TokenChips({ encoding, text }: { encoding: 'cl100k_base' | 'o200k_base'
         <Badge>{encoding === 'cl100k_base' ? 'GPT-4 时代常见' : '较新编码更紧凑'}</Badge>
       </div>
 
-      <div className="rounded-2xl border border-white/10 bg-slate-900/80 p-4 text-sm text-slate-200">
+      <div className="rounded-2xl border border-cyan-100 bg-cyan-50/70 p-4 text-sm text-slate-700">
         {breakdown.chunks.map((chunk) => (
           <button
             key={chunk.id}
-            className="mb-2 mr-2 rounded-2xl border border-white/10 bg-violet-500/10 px-3 py-2 text-left transition hover:border-violet-300/50 hover:bg-violet-500/20"
+            className="mb-2 mr-2 rounded-2xl border border-cyan-100 bg-white/90 px-3 py-2 text-left transition hover:border-cyan-300 hover:bg-cyan-50"
             title={`tokenId=${chunk.tokenId}, bytes=${chunk.bytes.join(',')}`}
             type="button"
           >
-            <span className="block font-medium text-white">
+            <span className="block font-medium text-slate-900">
               {chunk.text.replaceAll(' ', '␠').replaceAll('\n', '↵')}
             </span>
-            <span className="text-xs text-slate-400">#{chunk.tokenId}</span>
+            <span className="text-xs text-slate-500">#{chunk.tokenId}</span>
           </button>
         ))}
       </div>
 
       <div className="grid gap-3 md:grid-cols-3">
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
-          <div className="text-xs uppercase tracking-[0.2em] text-slate-400">token 数</div>
-          <div className="mt-2 text-2xl font-semibold text-white">{breakdown.tokenCount}</div>
+        <div className="rounded-2xl border border-cyan-100 bg-white/85 p-3">
+          <div className="text-xs uppercase tracking-[0.2em] text-slate-500">token 数</div>
+          <div className="mt-2 text-2xl font-semibold text-slate-900">{breakdown.tokenCount}</div>
         </div>
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
-          <div className="text-xs uppercase tracking-[0.2em] text-slate-400">字符数</div>
-          <div className="mt-2 text-2xl font-semibold text-white">{breakdown.charCount}</div>
+        <div className="rounded-2xl border border-cyan-100 bg-white/85 p-3">
+          <div className="text-xs uppercase tracking-[0.2em] text-slate-500">字符数</div>
+          <div className="mt-2 text-2xl font-semibold text-slate-900">{breakdown.charCount}</div>
         </div>
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
-          <div className="text-xs uppercase tracking-[0.2em] text-slate-400">字符 / token</div>
-          <div className="mt-2 text-2xl font-semibold text-white">
+        <div className="rounded-2xl border border-cyan-100 bg-white/85 p-3">
+          <div className="text-xs uppercase tracking-[0.2em] text-slate-500">字符 / token</div>
+          <div className="mt-2 text-2xl font-semibold text-slate-900">
             {formatRatio(breakdown.charTokenRatio)}
           </div>
         </div>
@@ -105,14 +105,14 @@ export function TokenBreakdownPanel({
       <Card className="space-y-5">
         <div className="space-y-2">
           <Badge>文本 {'->'} token</Badge>
-          <h2 className="text-2xl font-semibold text-white">把一句话拆成模型实际读取的小块</h2>
-          <p className="text-sm leading-6 text-slate-300">
+          <h2 className="text-2xl font-semibold text-slate-900">把一句话拆成模型实际读取的小块</h2>
+          <p className="text-sm leading-6 text-slate-600">
             你可以输入中文、英文、emoji 或代码片段，然后实时对比不同 encoding 的切分结果。
           </p>
         </div>
 
         <textarea
-          className="min-h-40 w-full rounded-3xl border border-white/10 bg-slate-900/80 px-4 py-4 text-base text-white outline-none transition focus:border-violet-400"
+          className="min-h-40 w-full rounded-3xl border border-cyan-100 bg-white px-4 py-4 text-base text-slate-900 outline-none transition focus:border-cyan-300"
           onChange={(event) => setText(event.target.value)}
           value={text}
         />
@@ -121,7 +121,7 @@ export function TokenBreakdownPanel({
           {sampleTexts.map((sample) => (
             <button
               key={sample.id}
-              className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-200 transition hover:bg-white/10"
+              className="rounded-full border border-cyan-100 bg-white/85 px-3 py-2 text-sm text-slate-700 transition hover:bg-cyan-50"
               onClick={() => setText(sample.text)}
               type="button"
             >
@@ -130,7 +130,7 @@ export function TokenBreakdownPanel({
           ))}
         </div>
 
-        <div className="rounded-3xl border border-violet-400/20 bg-violet-500/10 p-4 text-sm text-violet-100">
+        <div className="rounded-3xl border border-cyan-200 bg-cyan-50 p-4 text-sm text-cyan-700">
           重点不是下结论说“新模型永远 token 更少”，而是让用户亲眼看到：不同
           tokenizer 会让同一段中文呈现不同的切分粒度和成本体验。
         </div>
@@ -160,13 +160,13 @@ export function TokenBreakdownPanel({
               <motion.div
                 key={title}
                 animate={{ opacity: 1, y: 0 }}
-                className="rounded-2xl border border-white/10 bg-white/5 p-4"
+                className="rounded-2xl border border-cyan-100 bg-cyan-50/60 p-4"
                 initial={{ opacity: 0, y: 20 }}
                 transition={{ delay: order * 0.08 }}
               >
-                <div className="text-xs uppercase tracking-[0.2em] text-violet-200">Step {index}</div>
-                <div className="mt-2 text-lg font-semibold text-white">{title}</div>
-                <p className="mt-2 text-sm text-slate-300">{body}</p>
+                <div className="text-xs uppercase tracking-[0.2em] text-cyan-700">Step {index}</div>
+                <div className="mt-2 text-lg font-semibold text-slate-900">{title}</div>
+                <p className="mt-2 text-sm text-slate-600">{body}</p>
               </motion.div>
             ))}
           </Card>

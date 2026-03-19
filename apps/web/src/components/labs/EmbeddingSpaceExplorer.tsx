@@ -29,7 +29,7 @@ export function EmbeddingSpaceExplorer() {
         <div className="flex items-center justify-between gap-3">
           <div>
             <Badge>Embedding 训练过程</Badge>
-            <h2 className="mt-2 text-2xl font-semibold text-white">语义磁场如何慢慢形成</h2>
+            <h2 className="mt-2 text-2xl font-semibold text-slate-900">语义磁场如何慢慢形成</h2>
           </div>
           <Badge>教学抽象</Badge>
         </div>
@@ -45,16 +45,16 @@ export function EmbeddingSpaceExplorer() {
             <div
               key={title}
               className={`rounded-2xl border p-4 ${
-                index === 2 ? 'border-violet-400/40 bg-violet-500/10' : 'border-white/10 bg-white/5'
+                index === 2 ? 'border-cyan-300 bg-cyan-50' : 'border-cyan-100 bg-cyan-50/55'
               }`}
             >
-              <div className="text-sm font-semibold text-white">{title}</div>
-              <p className="mt-2 text-sm text-slate-300">{body}</p>
+              <div className="text-sm font-semibold text-slate-900">{title}</div>
+              <p className="mt-2 text-sm text-slate-600">{body}</p>
             </div>
           ))}
         </div>
 
-        <div className="rounded-3xl border border-amber-400/20 bg-amber-500/10 p-4 text-sm text-amber-100">
+        <div className="rounded-3xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700">
           这里展示的是通用 embedding 学习逻辑示意，不代表任何一家厂商完整公开的真实内部训练流水线。
         </div>
       </Card>
@@ -72,7 +72,7 @@ export function EmbeddingSpaceExplorer() {
                 <button
                   key={item}
                   className={`rounded-full px-4 py-2 text-sm ${
-                    item === phase ? 'bg-violet-500 text-white' : 'bg-white/5 text-slate-300'
+                    item === phase ? 'bg-cyan-300 text-slate-900' : 'bg-white/80 text-slate-600'
                   }`}
                   onClick={() => setPhase(item)}
                   type="button"
@@ -83,10 +83,10 @@ export function EmbeddingSpaceExplorer() {
             </div>
 
             <svg
-              className="h-[28rem] w-full rounded-3xl border border-white/10 bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.12),_transparent_28%),#020617]"
+              className="h-[28rem] w-full rounded-3xl border border-cyan-100 bg-[radial-gradient(circle_at_top,_rgba(165,243,252,0.55),_transparent_30%),linear-gradient(180deg,_#ffffff_0%,_#ecfeff_100%)]"
               viewBox="0 0 100 100"
             >
-              <text fill="#94a3b8" fontSize="4" x="4" y="8">
+              <text fill="#64748b" fontSize="4" x="4" y="8">
                 {phaseLabels[phase]}: 语义点云
               </text>
               {visible.map((point) => (
@@ -94,10 +94,10 @@ export function EmbeddingSpaceExplorer() {
                   <circle
                     cx={point.cx}
                     cy={point.cy}
-                    fill={point.group === '动物' ? '#38bdf8' : '#f97316'}
+                    fill={point.group === '动物' ? '#22d3ee' : '#2dd4bf'}
                     r="3.5"
                   />
-                  <text fill="#e2e8f0" fontSize="3" x={point.cx + 2.6} y={point.cy - 1}>
+                  <text fill="#155e75" fontSize="3" x={point.cx + 2.6} y={point.cy - 1}>
                     {point.label}
                   </text>
                 </g>
@@ -107,27 +107,27 @@ export function EmbeddingSpaceExplorer() {
 
           <TabsContent value="advanced" className="space-y-4">
             <div className="grid gap-3 md:grid-cols-2">
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <div className="text-sm font-semibold text-white">Batch</div>
-                <p className="mt-2 text-sm text-slate-300">
+              <div className="rounded-2xl border border-cyan-100 bg-cyan-50/55 p-4">
+                <div className="text-sm font-semibold text-slate-900">Batch</div>
+                <p className="mt-2 text-sm text-slate-600">
                   同一批次里既有正样本，也有负样本，帮助模型学习哪些点应该靠近。
                 </p>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <div className="text-sm font-semibold text-white">Loss</div>
-                <p className="mt-2 text-sm text-slate-300">
+              <div className="rounded-2xl border border-cyan-100 bg-cyan-50/55 p-4">
+                <div className="text-sm font-semibold text-slate-900">Loss</div>
+                <p className="mt-2 text-sm text-slate-600">
                   loss 越低，说明语义空间中的相对位置越符合训练目标。
                 </p>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <div className="text-sm font-semibold text-white">Backward</div>
-                <p className="mt-2 text-sm text-slate-300">
+              <div className="rounded-2xl border border-cyan-100 bg-cyan-50/55 p-4">
+                <div className="text-sm font-semibold text-slate-900">Backward</div>
+                <p className="mt-2 text-sm text-slate-600">
                   反向传播把误差信号传回 embedding 层，让向量一点点挪到更合理的位置。
                 </p>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <div className="text-sm font-semibold text-white">Normalization</div>
-                <p className="mt-2 text-sm text-slate-300">
+              <div className="rounded-2xl border border-cyan-100 bg-cyan-50/55 p-4">
+                <div className="text-sm font-semibold text-slate-900">Normalization</div>
+                <p className="mt-2 text-sm text-slate-600">
                   实际系统中常会加入归一化或投影技巧，保持向量空间稳定易用。
                 </p>
               </div>

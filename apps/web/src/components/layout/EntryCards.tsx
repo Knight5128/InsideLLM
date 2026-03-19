@@ -31,15 +31,15 @@ export function EntryCards() {
         const Icon = entry.icon
         return (
           <Link key={entry.to} to={entry.to}>
-            <Card className="h-full space-y-4 transition hover:-translate-y-1 hover:border-violet-300/40">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-500/15 text-violet-200">
+            <Card className="h-full space-y-4 transition hover:-translate-y-1 hover:border-cyan-300/70">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-100 text-cyan-700">
                 <Icon className="h-6 w-6" />
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-white">{entry.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-300">{entry.body}</p>
+                <h3 className="text-xl font-semibold text-slate-900">{entry.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600">{entry.body}</p>
               </div>
-              <div className="flex items-center gap-2 text-sm text-violet-200">
+              <div className="flex items-center gap-2 text-sm text-cyan-700">
                 进入模块
                 <ArrowRight className="h-4 w-4" />
               </div>

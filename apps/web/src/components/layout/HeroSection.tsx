@@ -20,14 +20,14 @@ export function HeroSection() {
       <div className="space-y-6">
         <div className="space-y-4">
           <h1 className="max-w-2xl text-5xl font-semibold leading-tight text-slate-900 md:text-6xl">
-            用 3D 方式看见
+            3D直观展示
             <span className="bg-gradient-to-r from-slate-900 via-sky-700 to-slate-700 bg-clip-text text-transparent">
-              {' '}
-              文本如何进入大模型内部
+              {''}
+              文本在LLM中传递的全流程
             </span>
           </h1>
           <p className="max-w-2xl text-lg leading-8 text-slate-600">
-            聚焦 tokenizer、embedding 和 Transformer，把文本进入大模型的过程直接展示出来。
+            本示例网站旨在直观展示文本在大语言模型中流转的全流程，聚焦 tokenizer、embedding 以及 LLM 的一种典型架构。
           </p>
         </div>
         <div className="flex flex-wrap gap-3">

@@ -14,7 +14,7 @@ export function TokenLabPage() {
     <div className="space-y-6">
       <Card className="space-y-4">
         <div className="flex flex-wrap items-start justify-between gap-4">
-          <h1 className="text-4xl font-semibold text-slate-900">从文本到 token，再到向量</h1>
+          <h1 className="text-4xl font-semibold text-slate-900">从文本到Token，再到向量</h1>
           <VendorSelect />
         </div>
       </Card>

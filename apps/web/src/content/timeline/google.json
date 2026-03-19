@@ -1,0 +1,50 @@
+[
+  {
+    "id": "google-token-counting",
+    "vendor": "google",
+    "lane": "tokenizer",
+    "title": "Gemini Token Counting",
+    "date": "2024-02",
+    "summary": "官方提供 token counting 与 token listing，适合做交互实验。",
+    "changeFromPrevious": "比仅展示模型能力更进一步，能让用户直接看到 token 边界和数量。",
+    "tags": ["tokenizer", "api"],
+    "confidence": {
+      "sourceType": "official",
+      "confidenceLevel": "high",
+      "notes": "来自 Gemini API 文档。",
+      "lastVerifiedAt": "2026-03-19"
+    }
+  },
+  {
+    "id": "google-gemini-embedding",
+    "vendor": "google",
+    "lane": "embedding",
+    "title": "Gemini Embedding",
+    "date": "2024-04",
+    "summary": "以独立 embedding 能力切入，强调向量表示在检索与相似度任务中的价值。",
+    "changeFromPrevious": "从纯生成模型故事延伸到检索与语义表示。",
+    "tags": ["embedding"],
+    "confidence": {
+      "sourceType": "official",
+      "confidenceLevel": "high",
+      "notes": "来自公开产品页与文档。",
+      "lastVerifiedAt": "2026-03-19"
+    }
+  },
+  {
+    "id": "google-gemini-embedding-2",
+    "vendor": "google",
+    "lane": "embedding",
+    "title": "Gemini Embedding 2 Preview",
+    "date": "2025-01",
+    "summary": "多模态 embedding 路线更清晰，适合作为二期扩展伏笔。",
+    "changeFromPrevious": "开始强调从文本向多模态语义空间扩展。",
+    "tags": ["embedding", "multimodal"],
+    "confidence": {
+      "sourceType": "official",
+      "confidenceLevel": "medium",
+      "notes": "以公开预览文档为主，需持续复核。",
+      "lastVerifiedAt": "2026-03-19"
+    }
+  }
+]

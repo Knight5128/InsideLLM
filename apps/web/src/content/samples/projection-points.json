@@ -1,0 +1,20 @@
+[
+  { "id": "p1", "label": "猫", "group": "动物", "phase": "before", "x": -0.8, "y": 0.5, "z": -0.2 },
+  { "id": "p2", "label": "小猫", "group": "动物", "phase": "before", "x": 0.2, "y": 0.7, "z": 0.1 },
+  { "id": "p3", "label": "dog", "group": "动物", "phase": "before", "x": 0.6, "y": -0.3, "z": 0.2 },
+  { "id": "p4", "label": "金融", "group": "经济", "phase": "before", "x": -0.5, "y": -0.7, "z": 0.3 },
+  { "id": "p5", "label": "股票", "group": "经济", "phase": "before", "x": 0.8, "y": -0.4, "z": -0.4 },
+  { "id": "p6", "label": "收益率", "group": "经济", "phase": "before", "x": -0.2, "y": 0.1, "z": 0.5 },
+  { "id": "p7", "label": "猫", "group": "动物", "phase": "during", "x": -0.45, "y": 0.35, "z": -0.1 },
+  { "id": "p8", "label": "小猫", "group": "动物", "phase": "during", "x": -0.2, "y": 0.45, "z": 0.05 },
+  { "id": "p9", "label": "dog", "group": "动物", "phase": "during", "x": 0.05, "y": 0.25, "z": 0.02 },
+  { "id": "p10", "label": "金融", "group": "经济", "phase": "during", "x": 0.25, "y": -0.2, "z": 0.12 },
+  { "id": "p11", "label": "股票", "group": "经济", "phase": "during", "x": 0.42, "y": -0.15, "z": -0.08 },
+  { "id": "p12", "label": "收益率", "group": "经济", "phase": "during", "x": 0.18, "y": -0.32, "z": 0.18 },
+  { "id": "p13", "label": "猫", "group": "动物", "phase": "after", "x": -0.55, "y": 0.42, "z": 0 },
+  { "id": "p14", "label": "小猫", "group": "动物", "phase": "after", "x": -0.38, "y": 0.36, "z": 0.06 },
+  { "id": "p15", "label": "dog", "group": "动物", "phase": "after", "x": -0.22, "y": 0.31, "z": -0.02 },
+  { "id": "p16", "label": "金融", "group": "经济", "phase": "after", "x": 0.37, "y": -0.18, "z": 0.05 },
+  { "id": "p17", "label": "股票", "group": "经济", "phase": "after", "x": 0.52, "y": -0.12, "z": -0.03 },
+  { "id": "p18", "label": "收益率", "group": "经济", "phase": "after", "x": 0.33, "y": -0.34, "z": 0.09 }
+]

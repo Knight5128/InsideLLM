@@ -1,0 +1,38 @@
+[
+  {
+    "id": "token",
+    "term": "Token",
+    "simple": "模型读文本时使用的小块，不一定等于一个汉字或一个单词。",
+    "advanced": "Tokenizer 根据词表与切分规则把原始文本转换成离散单元。"
+  },
+  {
+    "id": "tokenizer",
+    "term": "Tokenizer",
+    "simple": "把文本切成 token 的工具，决定模型先看到哪些小块。",
+    "advanced": "Tokenizer 定义了文本到 token id 序列的映射，是上下文成本与粒度体验的重要来源。"
+  },
+  {
+    "id": "embedding",
+    "term": "Embedding",
+    "simple": "把文字放进数学空间后的坐标表示。",
+    "advanced": "Embedding 是把离散 token 或文本映射到连续向量空间的表示，用于相似度计算与语义检索。"
+  },
+  {
+    "id": "contextual-embedding",
+    "term": "Contextual Embedding",
+    "simple": "同一个词在不同上下文里，会得到不同的动态表示。",
+    "advanced": "Contextual embedding 是 token 经过 Transformer 上下文化之后形成的动态向量表示。"
+  },
+  {
+    "id": "attention",
+    "term": "Attention",
+    "simple": "模型在读当前 token 时，会动态参考哪些上下文。",
+    "advanced": "Attention 通过 query / key / value 机制对上下文位置分配不同权重。"
+  },
+  {
+    "id": "transformer",
+    "term": "Transformer",
+    "simple": "由很多重复模块叠起来的模型主干，用来理解上下文关系。",
+    "advanced": "Transformer 由 self-attention、MLP、残差连接和归一化等模块堆叠构成。"
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "name": "insidellm",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev:web": "corepack pnpm --filter @insidellm/web dev",
+    "dev:worker": "corepack pnpm --filter @insidellm/worker dev",
+    "build": "corepack pnpm -r build",
+    "lint": "corepack pnpm -r lint",
+    "check": "corepack pnpm -r check"
+  }
+}

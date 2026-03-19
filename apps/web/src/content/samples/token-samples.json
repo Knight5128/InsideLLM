@@ -1,0 +1,20 @@
+[
+  {
+    "id": "cn-weather",
+    "label": "中文说明句",
+    "text": "今天天气不错，我们去公园散步吧。",
+    "language": "zh"
+  },
+  {
+    "id": "mixed-ai",
+    "label": "中英混合句",
+    "text": "Embedding 会把文本映射到 vector space，用来比较语义相似度。",
+    "language": "mixed"
+  },
+  {
+    "id": "emoji-code",
+    "label": "Emoji 与代码片段",
+    "text": "模型说：Hello 👋，然后执行 print('token')。",
+    "language": "mixed"
+  }
+]

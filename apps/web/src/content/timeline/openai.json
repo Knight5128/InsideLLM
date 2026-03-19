@@ -1,0 +1,66 @@
+[
+  {
+    "id": "openai-tokenizer-cl100k",
+    "vendor": "openai",
+    "lane": "tokenizer",
+    "title": "cl100k_base",
+    "date": "2023-03",
+    "summary": "在 GPT-3.5 / GPT-4 时代广泛使用，适合说明中文与非英文文本的切分体感。",
+    "changeFromPrevious": "相较更早编码，更强调多语言与聊天场景的通用性。",
+    "tags": ["tokenizer", "measured"],
+    "confidence": {
+      "sourceType": "official",
+      "confidenceLevel": "high",
+      "notes": "可通过公开 tokenizer 工具与 Cookbook 示例验证。",
+      "lastVerifiedAt": "2026-03-19"
+    }
+  },
+  {
+    "id": "openai-embedding-ada002",
+    "vendor": "openai",
+    "lane": "embedding",
+    "title": "text-embedding-ada-002",
+    "date": "2022-12",
+    "summary": "把多种旧 embedding 模型合并为一个更通用的入口，成为后续演化的起点。",
+    "changeFromPrevious": "统一了之前更分散的 embedding 系列。",
+    "tags": ["embedding", "official"],
+    "confidence": {
+      "sourceType": "official",
+      "confidenceLevel": "high",
+      "notes": "来自公开产品更新说明。",
+      "lastVerifiedAt": "2026-03-19"
+    }
+  },
+  {
+    "id": "openai-tokenizer-o200k",
+    "vendor": "openai",
+    "lane": "tokenizer",
+    "title": "o200k_base",
+    "date": "2024-05",
+    "summary": "更适合展示同一段中文在较新 encoding 下 token 数下降的趋势。",
+    "changeFromPrevious": "对多语言文本更紧凑，适合和 cl100k_base 做并排实验。",
+    "tags": ["tokenizer", "efficiency"],
+    "confidence": {
+      "sourceType": "measured",
+      "confidenceLevel": "high",
+      "notes": "可通过实际编码结果与公开示例验证。",
+      "lastVerifiedAt": "2026-03-19"
+    }
+  },
+  {
+    "id": "openai-embedding-3",
+    "vendor": "openai",
+    "lane": "embedding",
+    "title": "text-embedding-3-small / large",
+    "date": "2024-01",
+    "summary": "更低成本、更强多语言表现，并支持 dimensions 缩短向量。",
+    "changeFromPrevious": "从 ada-002 进一步提升质量和灵活性。",
+    "tags": ["embedding", "multilingual"],
+    "confidence": {
+      "sourceType": "official",
+      "confidenceLevel": "high",
+      "notes": "来自公开 API 文档。",
+      "lastVerifiedAt": "2026-03-19"
+    }
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "openai",
+    "name": "OpenAI",
+    "theme": "#7c3aed",
+    "summary": "最适合演示新旧 tokenizer 的切分差异。",
+    "detail": "通过 cl100k_base 与 o200k_base 的对比，可以让用户直接看到中文 token 化效率的变化。",
+    "tokenizerStory": "重点讲 tokenizer 代际变化如何影响 token 数与字符/token 比值。",
+    "embeddingStory": "展示 text-embedding-ada-002 到 text-embedding-3 系列的公开演化。",
+    "confidence": {
+      "sourceType": "official",
+      "confidenceLevel": "high",
+      "notes": "整理自公开文档与 API 说明。",
+      "lastVerifiedAt": "2026-03-19"
+    }
+  },
+  {
+    "id": "google",
+    "name": "Google Gemini",
+    "theme": "#0ea5e9",
+    "summary": "适合展示 token counting 与 token listing 的实时实验。",
+    "detail": "Gemini 既适合看 token 边界，也适合单独讲 embedding 产品线。",
+    "tokenizerStory": "重点讲 tokenizer 影响 token 边界、token IDs 和计数。",
+    "embeddingStory": "展示 Gemini Embedding 与 Gemini Embedding 2 Preview 的独立路线。",
+    "confidence": {
+      "sourceType": "official",
+      "confidenceLevel": "high",
+      "notes": "整理自 Gemini API 与 Vertex AI 文档。",
+      "lastVerifiedAt": "2026-03-19"
+    }
+  },
+  {
+    "id": "anthropic",
+    "name": "Anthropic Claude",
+    "theme": "#f97316",
+    "summary": "重点展示 token 计数与 embedding 生态，而非虚构 Claude 自有 embedding 代际。",
+    "detail": "这一部分强调模型厂商与 embedding 方案提供方可以是不同角色。",
+    "tokenizerStory": "重点讲 token counting 在上下文成本估算中的作用。",
+    "embeddingStory": "以 Anthropic 生态中的第三方 embedding 方案为主线。",
+    "confidence": {
+      "sourceType": "official",
+      "confidenceLevel": "high",
+      "notes": "整理自 Anthropic 文档与生态说明。",
+      "lastVerifiedAt": "2026-03-19"
+    }
+  }
+]

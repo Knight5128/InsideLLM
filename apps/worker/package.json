@@ -1,0 +1,25 @@
+{
+  "name": "@insidellm/worker",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "build": "wrangler deploy --dry-run",
+    "lint": "eslint src --ext .ts",
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@insidellm/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260317.0",
+    "@eslint/js": "^9.39.4",
+    "@types/node": "^24.12.0",
+    "eslint": "^9.39.4",
+    "globals": "^17.4.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.57.0",
+    "wrangler": "^4.42.1"
+  }
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "id": "anthropic-token-counting",
+    "vendor": "anthropic",
+    "lane": "tokenizer",
+    "title": "Claude Token Counting",
+    "date": "2024-07",
+    "summary": "官方支持 token counting，适合做上下文成本估算和输入长度解释。",
+    "changeFromPrevious": "让用户可以在实验台里直观看到 Claude 侧的 token 数估算能力。",
+    "tags": ["tokenizer", "api"],
+    "confidence": {
+      "sourceType": "official",
+      "confidenceLevel": "high",
+      "notes": "基于公开 API 文档整理。",
+      "lastVerifiedAt": "2026-03-19"
+    }
+  },
+  {
+    "id": "anthropic-embedding-ecosystem",
+    "vendor": "anthropic",
+    "lane": "embedding",
+    "title": "Anthropic Embedding Ecosystem",
+    "date": "2025-01",
+    "summary": "教学重点不是 Claude 自有 embedding 代际，而是说明生态中常使用第三方 embedding 方案。",
+    "changeFromPrevious": "把用户从“所有能力都由同一家提供”这一误解中带出来。",
+    "tags": ["ecosystem", "educational"],
+    "confidence": {
+      "sourceType": "official",
+      "confidenceLevel": "high",
+      "notes": "文档中明确以第三方 embedding 方案为示例。",
+      "lastVerifiedAt": "2026-03-19"
+    }
+  }
+]

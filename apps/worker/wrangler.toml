@@ -1,0 +1,6 @@
+name = "insidellm-worker"
+main = "src/index.ts"
+compatibility_date = "2026-03-19"
+
+[vars]
+APP_NAME = "InsideLLM"

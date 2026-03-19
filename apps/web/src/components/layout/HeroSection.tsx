@@ -1,8 +1,10 @@
 import { Suspense, lazy } from 'react'
+import { Sparkles } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
 import { usePerformanceMode } from '@/hooks/usePerformanceMode'
+import { useAppStore } from '@/stores/useAppStore'
 
 const HeroScene = lazy(() =>
   import('@/components/3d/HeroScene').then((module) => ({ default: module.HeroScene })),
@@ -10,6 +12,8 @@ const HeroScene = lazy(() =>
 
 export function HeroSection() {
   const { prefersLiteScene } = usePerformanceMode()
+  const motionReduced = useAppStore((state) => state.motionReduced)
+  const toggleReducedMotion = useAppStore((state) => state.toggleReducedMotion)
 
   return (
     <section className="grid gap-8 xl:grid-cols-[0.9fr_1.1fr] xl:items-center">
@@ -32,6 +36,10 @@ export function HeroSection() {
           </Button>
           <Button asChild variant="secondary">
             <Link to="/architecture">进入 3D 展厅</Link>
+          </Button>
+          <Button onClick={toggleReducedMotion} type="button" variant="secondary">
+            <Sparkles className="mr-2 h-4 w-4" />
+            {motionReduced ? '开启动效' : '关闭动效'}
           </Button>
         </div>
       </div>

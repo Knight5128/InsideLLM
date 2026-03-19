@@ -1,5 +1,7 @@
 import { Suspense, lazy } from 'react'
+import { Sparkles } from 'lucide-react'
 
+import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { usePerformanceMode } from '@/hooks/usePerformanceMode'
 import { useAppStore } from '@/stores/useAppStore'
@@ -11,12 +13,20 @@ const TransformerScene = lazy(() =>
 export function ArchitecturePage() {
   const detailMode = useAppStore((state) => state.detailMode)
   const setDetailMode = useAppStore((state) => state.setDetailMode)
+  const motionReduced = useAppStore((state) => state.motionReduced)
+  const toggleReducedMotion = useAppStore((state) => state.toggleReducedMotion)
   const { prefersLiteScene } = usePerformanceMode()
 
   return (
     <div className="space-y-6">
       <Card className="space-y-4">
-        <h1 className="text-4xl font-semibold text-slate-900">模型内部结构</h1>
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <h1 className="text-4xl font-semibold text-slate-900">OpenAI 模型内部结构</h1>
+          <Button onClick={toggleReducedMotion} type="button" variant="secondary">
+            <Sparkles className="mr-2 h-4 w-4" />
+            {motionReduced ? '开启动效' : '关闭动效'}
+          </Button>
+        </div>
         <div className="flex gap-2">
           <button
             className={`rounded-full px-4 py-2 text-sm ${

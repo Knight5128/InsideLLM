@@ -41,13 +41,12 @@ InsideLLM 是一个面向非技术用户的可交互科普网站，用 3D 可视
 
 这是项目的核心互动区域。用户可以输入中文、英文、中英混合文本、emoji 或代码片段，实时观察：
 
-- 文本如何被切分成 token
-- token 数、字符数、字符/token 比值
-- `cl100k_base` 与 `o200k_base` 的并排对比
+- 文本在不同模型 tokenizer 下的切分方式
+- token id、解码结果与分词边界
+- OpenAI、Claude、Gemma、Llama 等不同 tokenizer 的并排切换体验
 - 不同 tokenizer 对中文切分粒度与 token 效率的影响
-- token 如何进一步映射到 embedding 向量
 
-当前 OpenAI tokenizer 对比使用本地 tokenizer 逻辑完成，Gemini / Anthropic 的 token counting 与 token listing 通过 Worker 代理层预留了接入路径。
+当前实现直接嵌入 Xenova 的 Hugging Face `Tokenizer Playground` 构建产物，不再依赖 Google / Anthropic 的真实 API 代理。
 
 ### 4. Embedding 训练可视化
 
@@ -91,7 +90,6 @@ InsideLLM 是一个面向非技术用户的可交互科普网站，用 3D 可视
 - Framer Motion
 - Zustand
 - D3.js
-- Cloudflare Workers
 - pnpm workspace monorepo
 
 ## 项目结构
@@ -100,7 +98,7 @@ InsideLLM 是一个面向非技术用户的可交互科普网站，用 3D 可视
 InsideLLM/
   apps/
     web/        # 前端站点
-    worker/     # Cloudflare Worker API 代理
+    worker/     # 预留的轻量 Worker 壳
   packages/
     shared/     # 共享类型、常量、厂商元数据
   docs/         # 辅助开发文档（默认不纳入版本控制）
@@ -140,40 +138,6 @@ corepack pnpm check
 corepack pnpm build
 ```
 
-## Worker 环境变量
-
-如果需要真正接通第三方 token API，需要在 Worker 环境中配置：
-
-- `GEMINI_API_KEY`
-- `ANTHROPIC_API_KEY`
-
-前端不会直接暴露这些密钥，所有第三方请求都应通过 Worker 代理。
-
-## 统一配置中心
-
-项目根目录提供两份配置文件：
-
-- `conf.yaml`
-- `conf.yaml.backup`
-
-它们的职责如下：
-
-- `conf.yaml`：本地真实运行配置，可以填写真实 API Key
-- `conf.yaml.backup`：安全模板备份，用于恢复和参考
-
-项目脚本会优先读取 `conf.yaml`，并自动完成两件事：
-
-1. 将公开配置注入前端运行时，例如 Worker 地址和默认模型名
-2. 将密钥同步到 `apps/worker/.dev.vars`，供 Wrangler 本地开发使用
-
-如果你修改了 `conf.yaml`，可以手动执行：
-
-```bash
-corepack pnpm sync:conf
-```
-
-如果 `conf.yaml` 意外损坏，可以用 `conf.yaml.backup` 重新恢复一份再填写真实密钥。
-
 ## 设计原则
 
 - 面向非技术用户，优先保证“能看懂”
@@ -189,4 +153,4 @@ corepack pnpm sync:conf
 - 多模态 embedding 可视化
 - RAG / 向量数据库检索动画
 - 更多厂商与开源模型时间线
-- 更真实的在线 token 统计与 API 联调
+- 更丰富的 tokenizer 对比和可解释可视化

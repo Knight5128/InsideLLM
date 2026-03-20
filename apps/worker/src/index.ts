@@ -1,11 +1,7 @@
-import { handleTokenCount } from './routes/token-count'
-import { handleTokenList } from './routes/token-list'
-import { handleVendorMeta } from './routes/vendor-meta'
 import { corsPreflight, json } from './utils/json'
-import type { Env } from './utils/schema'
 
 export default {
-  async fetch(request: Request, env: Env) {
+  async fetch(request: Request) {
     const url = new URL(request.url)
 
     try {
@@ -15,22 +11,11 @@ export default {
 
       if (request.method === 'GET' && url.pathname === '/') {
         return json({
-          app: env.APP_NAME,
+          app: 'InsideLLM Worker',
           ok: true,
-          routes: ['/api/token-count', '/api/token-list', '/api/vendor-meta'],
+          deprecated: true,
+          message: 'Token Lab now uses an embedded local tokenizer playground. No API endpoints are required.',
         })
-      }
-
-      if (request.method === 'GET' && url.pathname === '/api/vendor-meta') {
-        return handleVendorMeta()
-      }
-
-      if (request.method === 'POST' && url.pathname === '/api/token-count') {
-        return await handleTokenCount(request, env)
-      }
-
-      if (request.method === 'POST' && url.pathname === '/api/token-list') {
-        return await handleTokenList(request, env)
       }
 
       return json({ error: 'Not found.' }, { status: 404 })

@@ -11,3 +11,4 @@ apps/worker/node_modules
 apps/worker/dist
 apps/worker/.dev.vars
 packages/shared/node_modules
+external/**

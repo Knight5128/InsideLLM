@@ -20,7 +20,7 @@ export function SiteHeader() {
           </div>
           <div>
             <div className="text-sm font-semibold uppercase tracking-[0.25em] text-slate-700">
-              LLM Inside 3D
+              Inside LLM 3D
             </div>
             <div className="text-xs text-slate-500">看见文本在大语言模型中的流转</div>
           </div>

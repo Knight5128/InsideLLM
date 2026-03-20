@@ -1,20 +1,66 @@
 [
   {
-    "id": "cn-weather",
-    "label": "中文说明句",
-    "text": "今天天气不错，我们去公园散步吧。",
+    "id": "cn-product-guide",
+    "category": "中文说明句",
+    "label": "产品功能说明",
+    "summary": "一段偏产品文档风格的中文说明，包含步骤、条件和结果。",
+    "text": "当你首次打开这个知识库应用时，系统会先根据最近阅读记录生成一个“继续浏览”面板，并把与你当前主题最相关的三篇文章固定在顶部。若你在搜索框中输入包含多个关键词的复杂问题，应用会先进行分词和语义扩展，再将候选结果按时间、相关度和内容完整性进行加权排序。这样做的目的，是让用户在不熟悉资料结构的情况下，也能在两到三次点击内找到可信、可读且上下文完整的答案。",
     "language": "zh"
   },
   {
-    "id": "mixed-ai",
-    "label": "中英混合句",
-    "text": "Embedding 会把文本映射到 vector space，用来比较语义相似度。",
+    "id": "cn-tech-explainer",
+    "category": "中文说明句",
+    "label": "技术概念解释",
+    "summary": "更长的技术说明句，适合观察中文长句在不同 tokenizer 下的切分差异。",
+    "text": "在检索增强生成系统中，Embedding 模型负责把自然语言映射为高维向量，而向量数据库并不直接“理解”文本内容，它只是通过距离计算来寻找分布上更接近的片段。如果文档切分粒度过粗，模型可能会召回很多主题相近但答案位置不精确的段落；如果切分粒度过细，又可能丢失足够的上下文，导致生成阶段出现信息残缺或引用不完整的问题。因此，chunk size、overlap 和 reranking 往往需要结合真实查询日志反复调试。",
+    "language": "zh"
+  },
+  {
+    "id": "en-release-notes",
+    "category": "英文说明句",
+    "label": "Product release notes",
+    "summary": "A longer English product update with versioning, feature changes, and user impact.",
+    "text": "Version 2.4 introduces a redesigned workspace dashboard that loads faster, remembers your last active project, and highlights unfinished tasks before archived ones. We also improved the search ranking logic so documents with recent edits and stronger keyword alignment appear earlier in the results list. For teams migrating from the legacy interface, the previous shortcuts still work, but several settings have moved into a new Preferences panel to reduce clutter in the primary navigation.",
+    "language": "en"
+  },
+  {
+    "id": "en-prompt-instructions",
+    "category": "英文说明句",
+    "label": "Prompt instructions",
+    "summary": "An instruction-heavy English paragraph with constraints, sequencing, and formatting requirements.",
+    "text": "Please summarize the meeting in plain English, preserve every action item with its owner and deadline, and group related decisions into short thematic sections. If the transcript contains uncertainty or conflicting statements, explicitly mark those areas instead of guessing. Keep the final response concise, avoid repetitive phrasing, and include a short follow-up list describing what information is still missing before the project can move into execution.",
+    "language": "en"
+  },
+  {
+    "id": "mixed-ai-workflow",
+    "category": "中英混合句",
+    "label": "AI 工作流说明",
+    "summary": "中英术语混排，包含 workflow、latency、fallback 等常见产品词汇。",
+    "text": "这个 AI workflow 的核心逻辑是：先用 embedding retrieval 找到最相关的 context，再把结果交给 reasoning model 生成 answer；如果首轮响应 latency 过高，系统会自动切换到一个更轻量的 fallback model，并在 UI 上提示“结果可能较简略”。这样设计的好处是，用户在大多数情况下能拿到稳定输出，而不是因为某个上游服务抖动就直接看到 request timeout。",
     "language": "mixed"
   },
   {
-    "id": "emoji-code",
-    "label": "Emoji 与代码片段",
-    "text": "模型说：Hello 👋，然后执行 print('token')。",
+    "id": "mixed-growth-dashboard",
+    "category": "中英混合句",
+    "label": "增长看板解读",
+    "summary": "数字、英文指标和中文分析混合，适合测试实际业务文本。",
+    "text": "从这个 growth dashboard 来看，signup conversion 在过去两周从 4.8% 提升到了 6.1%，但 activation rate 仍然停留在 38% 左右，说明用户愿意注册，却没有顺利完成 onboarding。下一步我们应该优先检查 first-session experience，包括 welcome copy、empty state 提示，以及关键 CTA 是否在 mobile viewport 中被折叠得太深。",
+    "language": "mixed"
+  },
+  {
+    "id": "emoji-python-snippet",
+    "category": "Emoji 与代码片段",
+    "label": "Emoji + Python",
+    "summary": "自然语言、Emoji 和 Python 代码混合，观察标点与符号的拆分方式。",
+    "text": "机器人提示：任务已完成 87% ✅，接下来会自动执行下面这段 Python 代码来生成摘要。\n\n```python\nnotes = [\"tokenization\", \"latency\", \"cost\"]\nsummary = \" | \".join(notes)\nprint(f\"Ready to ship 🚀: {summary}\")\n```",
+    "language": "mixed"
+  },
+  {
+    "id": "emoji-js-snippet",
+    "category": "Emoji 与代码片段",
+    "label": "Emoji + JavaScript",
+    "summary": "前端提示语和 JavaScript 片段组合，覆盖引号、模板字符串和特殊符号。",
+    "text": "前端通知写着：\"Deploy succeeded 🎉，请在 5 分钟后检查监控面板。\" 随后控制台输出了下面这段脚本：\n\n```ts\nconst status = { region: 'ap-sg', healthy: true }\nconst message = `Service ${status.region} is live ✅`\nconsole.log(message)\n```",
     "language": "mixed"
   }
 ]

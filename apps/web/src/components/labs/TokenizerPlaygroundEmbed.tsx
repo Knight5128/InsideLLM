@@ -4,15 +4,20 @@ import sampleTexts from '@/content/samples/token-samples.json'
 import { Card } from '@/components/ui/card'
 
 const tokenizerOptions = [
-  { id: 'Xenova/gpt-4', label: 'OpenAI GPT-4 / GPT-3.5' },
-  { id: 'Xenova/claude-tokenizer', label: 'Anthropic Claude' },
-  { id: 'Xenova/grok-1-tokenizer', label: 'xAI Grok-1' },
+  { id: 'Xenova/gpt-4', label: 'gpt-4 / gpt-3.5-turbo / text-embedding-ada-002' },
+  { id: 'Xenova/text-davinci-003', label: 'text-davinci-003 / text-davinci-002' },
+  { id: 'Xenova/gpt-3', label: 'gpt-3' },
+  { id: 'Xenova/grok-1-tokenizer', label: 'Grok-1' },
+  { id: 'Xenova/claude-tokenizer', label: 'Claude' },
   { id: 'Xenova/mistral-tokenizer-v3', label: 'Mistral v3' },
+  { id: 'Xenova/mistral-tokenizer-v1', label: 'Mistral v1' },
   { id: 'Xenova/gemma-tokenizer', label: 'Gemma' },
   { id: 'Xenova/llama-3-tokenizer', label: 'Llama 3' },
+  { id: 'Xenova/llama-tokenizer', label: 'LLaMA / Llama 2' },
   { id: 'Xenova/c4ai-command-r-v01-tokenizer', label: 'Cohere Command-R' },
   { id: 'Xenova/t5-small', label: 'T5' },
-  { id: 'Xenova/bert-base-cased', label: 'BERT' },
+  { id: 'Xenova/bert-base-cased', label: 'bert-base-cased' },
+  { id: '', label: 'Custom' },
 ] as const
 
 interface TokenizerPlaygroundEmbedProps {
@@ -40,12 +45,6 @@ export function TokenizerPlaygroundEmbed({
   return (
     <section className="space-y-6">
       <Card className="space-y-5">
-        <div className="space-y-2">
-          <h2 className="text-2xl font-semibold text-slate-900">Hugging Face Tokenizer Playground</h2>
-          <p className="max-w-3xl text-sm leading-6 text-slate-600">
-            Token 实验室现在直接嵌入 Xenova 的 tokenizer playground 实现，用同一个输入快速切换不同模型的 tokenizer。
-          </p>
-        </div>
 
         <div className="grid gap-4 xl:grid-cols-[1.1fr_0.9fr]">
           <label className="grid gap-2 text-sm text-slate-600">
@@ -72,10 +71,6 @@ export function TokenizerPlaygroundEmbed({
                 ))}
               </select>
             </label>
-
-            <div className="rounded-3xl border border-cyan-100 bg-cyan-50/60 p-4 text-sm leading-6 text-slate-600">
-              嵌入页会根据上面的文本和 tokenizer 重新加载，你也可以直接在实验场内部继续交互。
-            </div>
 
             <a
               className="inline-flex rounded-full border border-cyan-100 bg-white px-4 py-2 text-sm text-slate-700 transition hover:bg-cyan-50"

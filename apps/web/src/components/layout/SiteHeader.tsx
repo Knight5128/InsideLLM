@@ -7,8 +7,7 @@ const links = [
   ['/', '首页'],
   ['/architecture', '架构展厅'],
   ['/token-lab', 'Token 实验室'],
-  ['/embedding-lab', 'Embedding 训练'],
-  ['/timeline', '模型时间轴'],
+  ['/timeline', 'Tokenizer 时间轴'],
 ] as const
 
 export function SiteHeader() {

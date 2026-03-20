@@ -10,9 +10,6 @@ const ArchitecturePage = lazy(() =>
 const TokenLabPage = lazy(() =>
   import('@/pages/TokenLab').then((module) => ({ default: module.TokenLabPage })),
 )
-const EmbeddingLabPage = lazy(() =>
-  import('@/pages/EmbeddingLab').then((module) => ({ default: module.EmbeddingLabPage })),
-)
 const TimelinePage = lazy(() =>
   import('@/pages/Timeline').then((module) => ({ default: module.TimelinePage })),
 )
@@ -52,14 +49,6 @@ function App() {
             </Suspense>
           }
           path="token-lab"
-        />
-        <Route
-          element={
-            <Suspense fallback={<PageFallback />}>
-              <EmbeddingLabPage />
-            </Suspense>
-          }
-          path="embedding-lab"
         />
         <Route
           element={

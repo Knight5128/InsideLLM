@@ -32,16 +32,6 @@ export interface TokenBreakdown {
   chunks: TokenChunk[]
 }
 
-export interface ProjectionPoint {
-  id: string
-  label: string
-  group: string
-  x: number
-  y: number
-  z?: number
-  phase?: 'before' | 'during' | 'after'
-}
-
 export interface TimelineEvent {
   id: string
   vendor: VendorId

@@ -1,138 +1,53 @@
 # InsideLLM
 
-InsideLLM 是一个面向非技术用户的可交互科普网站，用 3D 可视化、时间轴和实验台帮助用户理解大模型内部是如何处理文本的，重点聚焦以下三条主线：
+InsideLLM 是一个面向非技术用户的交互式科普网站，用可视化方式解释大语言模型内部究竟发生了什么。
 
-- 大模型内部通用结构：`文本 -> token -> 向量 -> Transformer -> 输出`
-- 不同 tokenizer 对文本切分、token 成本与多语言效率的影响
-- 主流模型生态演化：OpenAI、Gemini、Claude 等厂商在 tokenizer、embedding 与整体能力上的代际变化
+它不试图复刻某个闭源模型的工程实现，而是把公开可验证的信息、教学化抽象和交互体验组合在一起，帮助用户建立一条更直观的认知路径：
 
-## 项目定位
+`文本 -> token -> 向量 -> Transformer -> 输出`
 
-这个项目不是对某家闭源模型做论文级复刻，而是把公开可验证的信息与教学化抽象演示结合起来，让用户快速建立直觉：
+## 这个网站在讲什么
 
-- 看见 token 是怎么切出来的
-- 看见 token 如何映射到向量
-- 看见上下文化后向量如何发生变化
-- 看见不同代际 tokenizer 为什么会带来不同的 token 体验
-- 看见 embedding 为什么能支撑检索、聚类、推荐和语义比较
+InsideLLM 目前围绕三条主线组织内容：
 
-## 核心体验
+- 大模型如何把自然语言切成 token，并进一步映射成向量
+- Transformer 内部的关键结构怎样共同完成“理解上下文”这件事
+- 不同厂商和不同代际的 tokenizer、embedding 能力为什么会带来截然不同的使用体验
+
+这个项目尤其关注中文语境下的理解门槛，尽量把“会影响真实使用体验的概念”讲清楚，而不是只停留在术语堆砌上。
+
+## 当前版本包含什么
 
 ### 1. 首页导览
 
-首页通过自动播放的可视化导览，快速建立“文本进入模型内部后会发生什么”的整体印象。用户可以从首页进入三条核心路径：结构展厅、Token 实验室、模型演化时间轴。
+首页通过自动播放的可视化导览，帮助第一次接触大模型的用户快速建立整体印象，并引导进入三个核心区域。
 
-### 2. 3D 架构展厅
+### 2. 架构展厅
 
-通过 3D 场景展示大模型的通用内部结构，包括：
+通过 3D 结构场景展示大模型的通用内部链路，包括输入文本、tokenizer、token ids、embedding、位置编码、Transformer block、attention、MLP、residual、layer norm 和输出头等关键部分。
 
-- Input Text
-- Tokenizer
-- Token IDs
-- Token Embedding
-- Positional Information
-- Transformer Blocks
-- Attention / MLP / Residual / LayerNorm
-- Output Head
-
-支持点击组件查看说明，并提供初级视图与高级视图切换。在弱设备或关闭动效时，会自动降级为 2D 解释视图。
+这一部分强调“看懂结构之间的关系”，而不是只记住组件名称。
 
 ### 3. Token 实验室
 
-这是项目的核心互动区域。用户可以输入中文、英文、中英混合文本、emoji 或代码片段，实时观察：
+用户可以输入中文、英文、中英混合文本、emoji 或代码片段，观察不同模型 tokenizer 的切分方式、token id、解码结果和分词边界差异。
 
-- 文本在不同模型 tokenizer 下的切分方式
-- token id、解码结果与分词边界
-- OpenAI、Claude、Gemma、Llama 等不同 tokenizer 的并排切换体验
-- 不同 tokenizer 对中文切分粒度与 token 效率的影响
-
-当前实现直接嵌入 Xenova 的 Hugging Face `Tokenizer Playground` 构建产物，不再依赖 Google / Anthropic 的真实 API 代理。
+当前版本直接嵌入本地 tokenizer playground 构建产物，不再依赖外部模型 API 代理，因此它更像一个面向理解的静态交互实验台。
 
 ### 4. 模型演化时间轴
 
-时间轴按厂商组织，帮助用户理解代际变化的连续性。当前内容重点覆盖：
+时间轴按厂商组织，梳理 OpenAI、Gemini、Claude 等生态在 tokenizer 与 embedding 方向上的关键变化，帮助用户理解“能力代际变化”不是抽象概念，而是会直接影响 token 成本、切分粒度、多语言效率和产品体验的设计选择。
 
-- OpenAI：`cl100k_base -> o200k_base`，以及 `text-embedding-ada-002 -> text-embedding-3-small / large`
-- Google Gemini：token counting / token listing 能力与 embedding 路线
-- Anthropic Claude：token counting 能力与 embedding 生态说明
+## 这个项目适合谁
 
-项目特别强调一个重要认知：不同 tokenizer 会直接改变用户对 token 成本、切分粒度和多语言效率的体感。更合适的表达不是“某一代模型一定字符数大于 token 数”或“小于 token 数”，而是：
+- 想搞懂大模型基础概念但不想一开始就读论文的用户
+- 希望更直观理解 token、embedding、Transformer 的产品经理、内容创作者和教育工作者
+- 想把抽象模型知识转成可展示、可讲解、可体验内容的人
 
-不同代际 tokenizer 对中文等非英文文本的切分策略不同，因此字符/token 比值会随着编码方案变化而显著变化。
+## 当前版本的定位
 
-## 技术栈
+当前版本更接近一个高可解释、强交互的第一版产品原型。它已经具备完整的认知路径和核心体验，但未来仍可以继续扩展更多主题，例如多模态 embedding、RAG 检索过程、更多模型生态对比，以及更细粒度的 tokenizer 可解释展示。
 
-- React 19
-- TypeScript
-- Vite
-- Tailwind CSS v4
-- shadcn 风格 UI 组件
-- React Router v7
-- React Three Fiber + drei
-- Framer Motion
-- Zustand
-- D3.js
-- pnpm workspace monorepo
+## 文档
 
-## 项目结构
-
-```text
-InsideLLM/
-  apps/
-    web/        # 前端站点
-    worker/     # 预留的轻量 Worker 壳
-  packages/
-    shared/     # 共享类型、常量、厂商元数据
-  docs/         # 辅助开发文档（默认不纳入版本控制）
-```
-
-## 本地开发
-
-### 环境要求
-
-- Node.js 22+
-- Corepack
-- pnpm
-
-### 安装依赖
-
-```bash
-corepack pnpm install
-```
-
-### 启动前端
-
-```bash
-corepack pnpm dev:web
-```
-
-### 启动 Worker
-
-```bash
-corepack pnpm dev:worker
-```
-
-### 质量检查
-
-```bash
-corepack pnpm lint
-corepack pnpm check
-corepack pnpm build
-```
-
-## 设计原则
-
-- 面向非技术用户，优先保证“能看懂”
-- 所有复杂概念尽量可视化
-- 明确区分“公开事实”和“教学抽象”
-- 优先支持中文场景下的 token 体验比较
-- 兼顾性能、移动端适配和弱设备降级
-
-## 当前版本说明
-
-当前版本已经具备完整前端骨架和核心展示路径，适合作为第一版产品原型与后续扩展基础。后续可继续扩展：
-
-- 多模态 embedding 可视化
-- RAG / 向量数据库检索动画
-- 更多厂商与开源模型时间线
-- 更丰富的 tokenizer 对比和可解释可视化
+- 部署说明见 `docs/cloudflare-pages-deploy.md`

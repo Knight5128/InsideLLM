@@ -18,7 +18,7 @@ interface AppState {
 export const useAppStore = create<AppState>((set) => ({
   vendor: DEFAULT_VENDOR,
   detailMode: 'basic',
-  motionReduced: false,
+  motionReduced: true,
   setVendor: (vendor) => set({ vendor }),
   setDetailMode: (detailMode) => set({ detailMode }),
   toggleReducedMotion: () =>

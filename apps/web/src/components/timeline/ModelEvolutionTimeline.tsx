@@ -190,14 +190,10 @@ export function ModelEvolutionTimeline() {
           <div className="max-w-3xl space-y-3">
             <Badge className="w-fit">Tokenizer Timeline</Badge>
             <h2 className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
-              纵向 Tokenizer 时间轴
+              Tokenizer 时间轴
             </h2>
             <p className="max-w-2xl text-sm leading-7 text-slate-600 md:text-base">
-              以纵向中轴展示各家模型 tokenizer 的公开演进节点。内容只取自
-              <code className="mx-1 rounded bg-white/70 px-1.5 py-0.5 text-xs text-slate-700">
-                {timelineDataset.meta.sourceOfTruth}
-              </code>
-              ，筛选后卡片会以弹性布局滑动到新位置。
+              聚焦各家主流大模型厂商已公开披露的 tokenizer 的演化路径。
             </p>
           </div>
 
@@ -260,7 +256,7 @@ export function ModelEvolutionTimeline() {
 
         <div className="flex flex-wrap gap-2 text-xs text-slate-500">
           <span className="rounded-full border border-cyan-100 bg-white/70 px-3 py-1.5">
-            当前节点 {visibleEntries.length}
+            全部 {visibleEntries.length}
           </span>
           <span className="rounded-full border border-cyan-100 bg-white/70 px-3 py-1.5">
             时间已知 {knownTimeCount}
@@ -269,7 +265,7 @@ export function ModelEvolutionTimeline() {
             时间未披露 {undisclosedTimeCount}
           </span>
           <span className="rounded-full border border-cyan-100 bg-white/70 px-3 py-1.5">
-            未披露确切时间的条目按报告顺序展示
+            未披露确切时间的条目按默认顺序展示
           </span>
         </div>
       </Card>

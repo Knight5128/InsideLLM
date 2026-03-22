@@ -283,7 +283,7 @@ export function ModelEvolutionTimeline() {
         </Card>
       ) : (
         <div className="relative overflow-hidden rounded-[2rem] border border-white/60 bg-[linear-gradient(180deg,rgba(255,255,255,0.74),rgba(240,249,255,0.42))] px-4 py-6 shadow-[0_24px_60px_rgba(15,23,42,0.08)] md:px-8 md:py-8">
-          <div className="pointer-events-none absolute bottom-0 left-[13px] top-0 w-px bg-[linear-gradient(180deg,rgba(14,165,233,0),rgba(14,165,233,0.36),rgba(14,165,233,0))] md:left-1/2 md:-translate-x-1/2" />
+          <div className="pointer-events-none absolute bottom-0 left-[13px] top-0 w-px bg-[linear-gradient(180deg,rgba(15,23,42,0),rgba(15,23,42,0.9),rgba(15,23,42,0))] md:left-1/2 md:-translate-x-1/2" />
 
           <LayoutGroup id="tokenizer-timeline">
             <div className="space-y-6 md:space-y-8">
@@ -299,7 +299,45 @@ export function ModelEvolutionTimeline() {
                     initial={{ opacity: 0, scale: 0.97, y: 18 }}
                     transition={springTransition}
                   >
-                    <div className="absolute left-[13px] top-10 h-4 w-4 -translate-x-1/2 rounded-full border-[5px] border-white bg-cyan-400 shadow-[0_0_0_7px_rgba(34,211,238,0.12),0_8px_20px_rgba(14,165,233,0.24)] md:left-1/2" />
+                    <div className="absolute left-[13px] top-10 h-4 w-4 -translate-x-1/2 md:left-1/2">
+                      {!motionReduced ? (
+                        <motion.div
+                          animate={{
+                            opacity: [0.14, 0.5, 0.22, 0.38, 0.12],
+                            scale: [0.82, 1.05, 1.92, 1.28, 0.88],
+                          }}
+                          className="absolute inset-0 rounded-full bg-cyan-300/60 blur-[6px]"
+                          transition={{
+                            duration: 2.2,
+                            ease: [0.22, 1, 0.36, 1],
+                            repeat: Number.POSITIVE_INFINITY,
+                            times: [0, 0.1, 0.28, 0.48, 1],
+                            repeatDelay: 0.08,
+                            delay: (index % 2) * 0.72,
+                          }}
+                        />
+                      ) : null}
+                      {!motionReduced ? (
+                        <motion.div
+                          animate={{
+                            scale: [1, 0.9, 1.16, 0.98, 1.08, 1],
+                          }}
+                          className="absolute inset-0 rounded-full"
+                          transition={{
+                            duration: 2.2,
+                            ease: 'easeInOut',
+                            repeat: Number.POSITIVE_INFINITY,
+                            times: [0, 0.08, 0.16, 0.28, 0.46, 1],
+                            repeatDelay: 0.08,
+                            delay: (index % 2) * 0.72,
+                          }}
+                        >
+                          <div className="absolute inset-0 rounded-full border-[5px] border-white bg-cyan-400 shadow-[0_0_0_7px_rgba(34,211,238,0.12),0_8px_20px_rgba(14,165,233,0.24)]" />
+                        </motion.div>
+                      ) : (
+                        <div className="absolute inset-0 rounded-full border-[5px] border-white bg-cyan-400 shadow-[0_0_0_7px_rgba(34,211,238,0.12),0_8px_20px_rgba(14,165,233,0.24)]" />
+                      )}
+                    </div>
 
                     <div className="hidden md:block md:col-start-1">
                       {isLeft ? (

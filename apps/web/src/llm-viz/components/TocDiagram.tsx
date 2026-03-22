@@ -96,7 +96,7 @@ export const TocDiagram: React.FC<{
 
     let structure: IEl = {
         type: ElType.Block, height: 0, color: '#eee', special: 'llm', padX: 2.0, padY: 1.0, id: 'llm', items: [
-            { type: ElType.Cell, label: 'tok embed', height: 1, width: 4, color: colors.tokEmbed, id: 'tokEmbed' },
+            { type: ElType.Cell, label: 'token embed', height: 1, width: 4, color: colors.tokEmbed, id: 'tokEmbed' },
             { type: ElType.PosEmbed, height: 1.8, id: 'posEmbed' },
             { type: ElType.Block, height: 0, padX: 3, padY: 0, color: '#ddd', special: 'transformer', id: 'transformer', items: [
                 { type: ElType.Gap, height: 1.2, gapType: 'exit', arrow: true },
@@ -560,7 +560,7 @@ export const TocDiagram: React.FC<{
     let titleAbove = false;
 
     return <div>
-        {titleAbove && <div className={s.tocTitle}>Table of Contents</div>}
+        {titleAbove && <div className={s.tocTitle}>Contents</div>}
         <div className={s.tocDiagram}>
             <svg viewBox={`0 0 310 ${height}`} width={'310px'} height={height} ref={setDiagramEl}>
                 {exampleInfo?.node}
@@ -571,7 +571,7 @@ export const TocDiagram: React.FC<{
                 {renderTocToDigramLines()}
             </svg>
             <div className={s.toc}>
-                {!titleAbove && <div className={s.tocTitle}>Table of Contents</div>}
+                {!titleAbove && <div className={s.tocTitle}>Contents</div>}
                 {entryGroups.map((group, i) => {
 
                     return <React.Fragment key={i}>

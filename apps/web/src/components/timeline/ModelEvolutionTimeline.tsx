@@ -52,7 +52,6 @@ interface TimelineEntry {
   disclosure: 'public' | 'partial' | 'undisclosed' | 'pending-verification'
   summary: string
   changeFromPrevious: string
-  sourceSection: string
 }
 
 type TimelineVendorId =
@@ -98,6 +97,81 @@ const multilingualLabel = {
   limited: '有限',
   undisclosed: '未公开',
 } as const
+
+const vendorThemes: Record<
+  TimelineVendorId,
+  {
+    glow: string
+    badge: string
+    line: string
+    chip: string
+    panel: string
+  }
+> = {
+  openai: {
+    glow: 'from-emerald-300/30 via-cyan-300/10 to-transparent',
+    badge: 'bg-emerald-50/90 text-emerald-900',
+    line: 'from-emerald-300/70 to-cyan-300/50',
+    chip: 'border-emerald-200/80 bg-emerald-50/70 text-emerald-950',
+    panel: 'border-emerald-100 bg-emerald-50/55',
+  },
+  google: {
+    glow: 'from-blue-300/30 via-sky-300/12 to-transparent',
+    badge: 'bg-blue-50/90 text-blue-900',
+    line: 'from-blue-300/70 to-sky-300/50',
+    chip: 'border-blue-200/80 bg-blue-50/70 text-blue-950',
+    panel: 'border-blue-100 bg-blue-50/55',
+  },
+  anthropic: {
+    glow: 'from-orange-300/28 via-amber-200/10 to-transparent',
+    badge: 'bg-orange-50/90 text-orange-900',
+    line: 'from-orange-300/70 to-amber-300/50',
+    chip: 'border-orange-200/80 bg-orange-50/70 text-orange-950',
+    panel: 'border-orange-100 bg-orange-50/55',
+  },
+  deepseek: {
+    glow: 'from-indigo-300/28 via-cyan-300/10 to-transparent',
+    badge: 'bg-indigo-50/90 text-indigo-900',
+    line: 'from-indigo-300/70 to-cyan-300/50',
+    chip: 'border-indigo-200/80 bg-indigo-50/70 text-indigo-950',
+    panel: 'border-indigo-100 bg-indigo-50/55',
+  },
+  zhipu: {
+    glow: 'from-fuchsia-300/28 via-violet-300/10 to-transparent',
+    badge: 'bg-fuchsia-50/90 text-fuchsia-900',
+    line: 'from-fuchsia-300/70 to-violet-300/50',
+    chip: 'border-fuchsia-200/80 bg-fuchsia-50/70 text-fuchsia-950',
+    panel: 'border-fuchsia-100 bg-fuchsia-50/55',
+  },
+  qwen: {
+    glow: 'from-red-300/24 via-orange-300/10 to-transparent',
+    badge: 'bg-rose-50/90 text-rose-900',
+    line: 'from-rose-300/70 to-orange-300/50',
+    chip: 'border-rose-200/80 bg-rose-50/70 text-rose-950',
+    panel: 'border-rose-100 bg-rose-50/55',
+  },
+  xai: {
+    glow: 'from-slate-400/25 via-cyan-300/10 to-transparent',
+    badge: 'bg-slate-100/95 text-slate-900',
+    line: 'from-slate-400/70 to-cyan-300/50',
+    chip: 'border-slate-200/80 bg-slate-100/80 text-slate-900',
+    panel: 'border-slate-200 bg-slate-100/70',
+  },
+  mistral: {
+    glow: 'from-yellow-300/26 via-amber-200/10 to-transparent',
+    badge: 'bg-yellow-50/90 text-yellow-900',
+    line: 'from-yellow-300/70 to-amber-300/50',
+    chip: 'border-yellow-200/80 bg-yellow-50/70 text-yellow-950',
+    panel: 'border-yellow-100 bg-yellow-50/55',
+  },
+  meta: {
+    glow: 'from-sky-300/28 via-blue-300/10 to-transparent',
+    badge: 'bg-sky-50/90 text-sky-900',
+    line: 'from-sky-300/70 to-blue-300/50',
+    chip: 'border-sky-200/80 bg-sky-50/70 text-sky-950',
+    panel: 'border-sky-100 bg-sky-50/55',
+  },
+}
 
 function toTimeValue(entry: TimelineEntry) {
   if (typeof entry.time.year !== 'number') {
@@ -163,6 +237,8 @@ export function ModelEvolutionTimeline() {
 
   const knownTimeCount = visibleEntries.filter((entry) => toTimeValue(entry) !== null).length
   const undisclosedTimeCount = visibleEntries.length - knownTimeCount
+  const visibleVendorCount = new Set(visibleEntries.map((entry) => entry.vendorId)).size
+  const visibleTypeCount = new Set(visibleEntries.map((entry) => entry.tokenizerFamily)).size
 
   const vendorOptions = useMemo(
     () => [{ id: 'all', label: '全部厂商' }, ...timelineDataset.meta.vendorOptions],
@@ -185,20 +261,20 @@ export function ModelEvolutionTimeline() {
 
   return (
     <section className="space-y-6">
-      <Card className="space-y-6">
+      <Card className="space-y-6 rounded-[2rem] border border-white/70 bg-[linear-gradient(180deg,rgba(255,255,255,0.86),rgba(248,250,252,0.76))]">
         <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
           <div className="max-w-3xl space-y-3">
-            <Badge className="w-fit">Tokenizer Timeline</Badge>
+            <Badge className="w-fit">Timeline</Badge>
             <h2 className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
-              Tokenizer 时间轴
+              厂商 / 模型分词器时间线
             </h2>
             <p className="max-w-2xl text-sm leading-7 text-slate-600 md:text-base">
-              聚焦各家主流大模型厂商已公开披露的 tokenizer 的演化路径。
+              下面按时间顺序展示不同厂商在实际模型中采用了什么 tokenizer、词表大致处于什么量级，以及每一代相对上一代的变化。
             </p>
           </div>
 
           <div className="xl:max-w-xl xl:flex-1">
-            <div className="grid gap-3 md:grid-cols-3">
+            <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
               <label className="space-y-2">
                 <span className="text-xs font-medium uppercase tracking-[0.18em] text-slate-500">
                   厂商筛选
@@ -250,6 +326,24 @@ export function ModelEvolutionTimeline() {
                   {sortDirection === 'asc' ? '正序时间轴' : '逆序时间轴'}
                 </Button>
               </div>
+
+              <div className="space-y-2">
+                <span className="text-xs font-medium uppercase tracking-[0.18em] text-slate-500">
+                  快速重置
+                </span>
+                <Button
+                  className="w-full justify-center rounded-2xl py-3"
+                  onClick={() => {
+                    setVendorFilter('all')
+                    setTypeFilter('all')
+                    setSortDirection('asc')
+                  }}
+                  type="button"
+                  variant="ghost"
+                >
+                  恢复默认视图
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -257,6 +351,12 @@ export function ModelEvolutionTimeline() {
         <div className="flex flex-wrap gap-2 text-xs text-slate-500">
           <span className="rounded-full border border-cyan-100 bg-white/70 px-3 py-1.5">
             全部 {visibleEntries.length}
+          </span>
+          <span className="rounded-full border border-cyan-100 bg-white/70 px-3 py-1.5">
+            覆盖厂商 {visibleVendorCount}
+          </span>
+          <span className="rounded-full border border-cyan-100 bg-white/70 px-3 py-1.5">
+            类型 {visibleTypeCount}
           </span>
           <span className="rounded-full border border-cyan-100 bg-white/70 px-3 py-1.5">
             时间已知 {knownTimeCount}
@@ -391,6 +491,7 @@ function TimelineCard({
   motionReduced: boolean
 }) {
   const isLeft = align === 'left'
+  const theme = vendorThemes[entry.vendorId]
   const cardClassName =
     align === 'mobile'
       ? 'ml-0'
@@ -408,7 +509,13 @@ function TimelineCard({
       }
       whileHover={motionReduced ? undefined : { y: -4, scale: 1.01 }}
     >
-      <Card className="relative space-y-4 overflow-hidden rounded-[2rem] border border-white/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.86),rgba(248,250,252,0.72))] p-5 shadow-[0_18px_42px_rgba(15,23,42,0.08)]">
+      <Card className="relative space-y-4 overflow-hidden rounded-[2rem] border border-white/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.88),rgba(248,250,252,0.76))] p-5 shadow-[0_18px_42px_rgba(15,23,42,0.08)]">
+        <div
+          className={`pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-r ${theme.glow}`}
+        />
+        <div
+          className={`pointer-events-none absolute inset-x-5 top-0 h-px bg-gradient-to-r ${theme.line}`}
+        />
         <div
           className={
             align === 'mobile'
@@ -419,23 +526,22 @@ function TimelineCard({
           }
         />
 
-        <div className="flex flex-wrap items-center gap-2">
-          <Badge className="bg-white/80 text-slate-600">{entry.vendorLabel}</Badge>
+        <div className="relative flex flex-wrap items-center gap-2">
+          <Badge className={theme.badge}>{entry.vendorLabel}</Badge>
           <Badge className="bg-cyan-50/90 text-cyan-800">{entry.time.label}</Badge>
           <Badge className="bg-slate-100/90 text-slate-700">{entry.tokenizerFamilyLabel}</Badge>
         </div>
 
-        <div className="space-y-2">
+        <div className="relative space-y-2">
           <p className="text-xs font-medium uppercase tracking-[0.16em] text-slate-400">
             {entry.seriesLabel}
           </p>
           <h3 className="text-xl font-semibold leading-7 text-slate-900">{entry.modelLabel}</h3>
           <p className="text-sm leading-7 text-slate-600">{entry.summary}</p>
-          <p className="text-xs leading-6 text-slate-400">来源区段：{entry.sourceSection}</p>
         </div>
 
-        <div className="flex flex-wrap gap-2 text-xs text-slate-600">
-          <span className="rounded-full border border-cyan-100 bg-cyan-50/70 px-3 py-1.5">
+        <div className="relative flex flex-wrap gap-2 text-xs text-slate-600">
+          <span className={`rounded-full border px-3 py-1.5 ${theme.chip}`}>
             词表 {entry.vocabulary.display}
           </span>
           <span className="rounded-full border border-slate-200 bg-white/80 px-3 py-1.5">
@@ -449,16 +555,17 @@ function TimelineCard({
           </span>
         </div>
 
-        <div className="rounded-2xl border border-cyan-100 bg-cyan-50/60 p-4 text-sm leading-7 text-slate-600">
-          <span className="font-medium text-slate-900">Tokenizer 说明：</span> {entry.tokenizerDetail}
+        <div className="grid gap-3 md:grid-cols-2">
+          <div className={`rounded-2xl border p-4 text-sm leading-7 text-slate-600 ${theme.panel}`}>
+            <span className="font-medium text-slate-900">Tokenizer 类型：</span> {entry.tokenizerDetail}
+          </div>
+          <div className="rounded-2xl border border-slate-200 bg-slate-50/75 p-4 text-sm leading-7 text-slate-600">
+            <span className="font-medium text-slate-900">相较前一阶段：</span> {entry.changeFromPrevious}
+          </div>
         </div>
 
         <div className="rounded-2xl border border-white/80 bg-white/70 p-4 text-sm leading-7 text-slate-600">
           <span className="font-medium text-slate-900">预处理 / 规则：</span> {entry.preprocessing}
-        </div>
-
-        <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-4 text-sm leading-7 text-slate-600">
-          <span className="font-medium text-slate-900">相较前一阶段：</span> {entry.changeFromPrevious}
         </div>
       </Card>
     </motion.div>

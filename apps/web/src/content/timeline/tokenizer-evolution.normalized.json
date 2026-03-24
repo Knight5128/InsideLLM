@@ -689,7 +689,7 @@
       "modelLabel": "v3 tokenizer（传统 32k 路线）",
       "seriesLabel": "开源模型与新一代 tokenizer 线索",
       "time": {
-        "label": "2024（文档未给具体发布时间）",
+        "label": "2024（大约时间）",
         "year": 2024,
         "precision": "year"
       },
@@ -715,7 +715,7 @@
       "modelLabel": "v3 “tekken” tokenizer（大词表路线）",
       "seriesLabel": "开源模型与新一代 tokenizer 线索",
       "time": {
-        "label": "2024（文档未给具体发布时间）",
+        "label": "2024（大约时间）",
         "year": 2024,
         "precision": "year"
       },

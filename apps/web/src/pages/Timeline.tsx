@@ -9,6 +9,23 @@ const hierarchyCards = [
     title: 'Word-based',
     subtitle: '按词切分',
     body: '最符合人的直觉，但词表容易迅速膨胀，低频词与词形变化会带来明显的 OOV 压力。',
+    examples: [
+      {
+        label: 'EXAMPLE - EN',
+        source: 'tokenizers help language models read text efficiently',
+        tokens: ['tokenizers', 'help', 'language', 'models', 'read', 'text', 'efficiently'],
+      },
+      {
+        label: 'EXAMPLE - ZH',
+        source: '分词器帮助语言模型更高效地理解文本',
+        tokens: ['分词器', '帮助', '语言模型', '更高效地', '理解', '文本'],
+      },
+      {
+        label: 'EXAMPLE - JP',
+        source: 'トークナイザーは言語モデルが文章を効率よく読むのを助ける',
+        tokens: ['トークナイザー', 'は', '言語モデル', 'が', '文章', 'を', '効率よく', '読む', 'のを', '助ける'],
+      },
+    ],
     tone: 'border-amber-200/80 bg-amber-50/70 text-amber-900',
   },
   {
@@ -16,6 +33,23 @@ const hierarchyCards = [
     title: 'Character-based',
     subtitle: '按字符切分',
     body: '词表很小、覆盖强，但序列会变长，语义颗粒度过细，训练和推理成本通常更高。',
+    examples: [
+      {
+        label: 'EXAMPLE - EN',
+        source: 'tokenizers help language models',
+        tokens: ['t', 'o', 'k', 'e', 'n', 'i', 'z', 'e', 'r', 's', '[space]', 'h', 'e', 'l', 'p', '[space]', 'l', 'a', 'n', 'g', 'u', 'a', 'g', 'e', '[space]', 'm', 'o', 'd', 'e', 'l', 's'],
+      },
+      {
+        label: 'EXAMPLE - ZH',
+        source: '分词器帮助语言模型理解文本',
+        tokens: ['分', '词', '器', '帮', '助', '语', '言', '模', '型', '理', '解', '文', '本'],
+      },
+      {
+        label: 'EXAMPLE - JP',
+        source: 'トークナイザーが文章を理解する',
+        tokens: ['ト', 'ー', 'ク', 'ナ', 'イ', 'ザ', 'ー', 'が', '文', '章', 'を', '理', '解', 'す', 'る'],
+      },
+    ],
     tone: 'border-violet-200/80 bg-violet-50/70 text-violet-900',
   },
   {
@@ -23,6 +57,23 @@ const hierarchyCards = [
     title: 'Subword',
     subtitle: '按子词切分',
     body: '现代 Transformer / LLM 的主流方案，在词表大小与语义表达能力之间取得更好的平衡。',
+    examples: [
+      {
+        label: 'EXAMPLE - EN',
+        source: 'tokenizers help language models read efficiently',
+        tokens: ['token', 'izers', 'help', 'language', 'model', 's', 'read', 'efficient', 'ly'],
+      },
+      {
+        label: 'EXAMPLE - ZH',
+        source: '分词器帮助语言模型更高效地理解文本',
+        tokens: ['分词', '器', '帮助', '语言', '模型', '更', '高效', '地', '理解', '文本'],
+      },
+      {
+        label: 'EXAMPLE - JP',
+        source: 'トークナイザーは文章理解を助ける',
+        tokens: ['トーク', 'ナイザー', 'は', '文章', '理解', 'を', '助け', 'る'],
+      },
+    ],
     tone: 'border-cyan-200/80 bg-cyan-50/80 text-cyan-950',
   },
 ] as const
@@ -92,6 +143,26 @@ export function TimelinePage() {
               <p className="text-xs font-semibold uppercase tracking-[0.22em] opacity-70">{item.subtitle}</p>
               <h3 className="text-2xl font-semibold">{item.title}</h3>
               <p className="text-sm leading-7 opacity-90">{item.body}</p>
+              <div className="space-y-3 rounded-2xl bg-white/55 p-4">
+                {item.examples.map((example) => (
+                  <div key={`${item.id}-${example.label}`} className="space-y-2">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
+                      {example.label}
+                    </p>
+                    <p className="font-mono text-xs opacity-80">{example.source}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {example.tokens.map((token, index) => (
+                        <span
+                          key={`${item.id}-${example.label}-${index}-${token}`}
+                          className="rounded-full border border-current/15 bg-white/70 px-2.5 py-1 font-mono text-xs"
+                        >
+                          {token}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </Card>
           ))}
         </div>

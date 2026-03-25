@@ -36,25 +36,25 @@
       "id": "openai-gpt-1",
       "vendorId": "openai",
       "vendorLabel": "OpenAI",
-      "modelLabel": "GPT（常称 GPT-1）",
-      "seriesLabel": "GPT 系列与 tiktoken 编码族",
+      "modelLabel": "GPT-1",
+      "seriesLabel": "GPT 系列",
       "time": {
-        "label": "2018（论文）",
+        "label": "2018",
         "year": 2018,
         "precision": "year"
       },
       "sequenceInVendor": 1,
       "tokenizerFamily": "bpe",
       "tokenizerFamilyLabel": "BPE",
-      "tokenizerDetail": "BPE，40k merges",
+      "tokenizerDetail": "BPE",
       "vocabulary": {
-        "display": "由 40k merges 推得 40k+base（论文未给精确数）"
+        "display": "40000+"
       },
       "byteLevel": "no",
       "multilingual": "limited",
       "preprocessing": "使用 ftfy 清洗、标点与空白标准化，并使用 spaCy tokenizer（预分词）",
       "disclosure": "public",
-      "summary": "早期 GPT 仍依赖外部文本清洗与预分词；BPE merges 明确给出 40,000。",
+      "summary": "早期 GPT 仍依赖外部文本清洗与预分词",
       "changeFromPrevious": "作为较早期的 GPT tokenizer 方案，外部清洗与预分词参与度较高。",
       "sourceSection": "OpenAI（GPT 系列与 tiktoken 编码族）"
     },
@@ -63,9 +63,9 @@
       "vendorId": "openai",
       "vendorLabel": "OpenAI",
       "modelLabel": "GPT-2",
-      "seriesLabel": "GPT 系列与 tiktoken 编码族",
+      "seriesLabel": "GPT 系列",
       "time": {
-        "label": "2019（论文）",
+        "label": "2019",
         "year": 2019,
         "precision": "year"
       },
@@ -74,14 +74,14 @@
       "tokenizerFamilyLabel": "byte-level BPE",
       "tokenizerDetail": "byte-level BPE",
       "vocabulary": {
-        "display": "50,257",
+        "display": "50,257 (256基本token + 1特殊文本token + 50000 merges)",
         "value": 50257
       },
       "byteLevel": "yes",
       "multilingual": "partial",
-      "preprocessing": "论文讨论避免跨字符类别 merge、为空格做特殊处理；强调 byte-level 可在 Unicode 字符串上工作",
+      "preprocessing": "避免跨字符类别 merge、为空格做特殊处理",
       "disclosure": "public",
-      "summary": "明确提出 byte-level BPE 的动机：以 256 bytes 为最小字表并压缩，避免巨大 Unicode 基表；词表扩到 50,257。",
+      "summary": "明确提出 byte-level BPE 的动机：以 256 bytes 为最小字表并压缩，避免巨大 Unicode 基表",
       "changeFromPrevious": "从依赖外部清洗与预分词，转向更强调可逆性、Unicode 覆盖与避免 <unk>。",
       "sourceSection": "OpenAI（GPT 系列与 tiktoken 编码族）"
     },
@@ -89,8 +89,8 @@
       "id": "openai-r50k-base",
       "vendorId": "openai",
       "vendorLabel": "OpenAI",
-      "modelLabel": "tiktoken：gpt2 / r50k_base",
-      "seriesLabel": "GPT 系列与 tiktoken 编码族",
+      "modelLabel": "早期 GPT-3 系列，如 davinci、curie、babbage、ada",
+      "seriesLabel": "GPT 系列",
       "time": {
         "label": "作为编码实现公开（发布时间随 repo）",
         "precision": "undisclosed"
@@ -98,7 +98,7 @@
       "sequenceInVendor": 3,
       "tokenizerFamily": "tiktoken-bpe",
       "tokenizerFamilyLabel": "tiktoken / BPE",
-      "tokenizerDetail": "BPE（tiktoken）",
+      "tokenizerDetail": "byte-level BPE (r50k_base)",
       "vocabulary": {
         "display": "50,257",
         "value": 50257
@@ -115,8 +115,8 @@
       "id": "openai-p50k-base",
       "vendorId": "openai",
       "vendorLabel": "OpenAI",
-      "modelLabel": "tiktoken：p50k_base / p50k_edit",
-      "seriesLabel": "GPT 系列与 tiktoken 编码族",
+      "modelLabel": "text-davinci-002、text-davinci-003 以及 Codex 系列",
+      "seriesLabel": "GPT 系列",
       "time": {
         "label": "作为编码实现公开（发布时间随 repo）",
         "precision": "undisclosed"
@@ -124,7 +124,7 @@
       "sequenceInVendor": 4,
       "tokenizerFamily": "tiktoken-bpe",
       "tokenizerFamilyLabel": "tiktoken / BPE",
-      "tokenizerDetail": "BPE（tiktoken）",
+      "tokenizerDetail": "byte-level BPE (p50k_base/p50k_edit)",
       "vocabulary": {
         "display": "50,281（p50k_base）；p50k_edit 额外含 FIM special tokens",
         "value": 50281
@@ -141,8 +141,8 @@
       "id": "openai-cl100k-base",
       "vendorId": "openai",
       "vendorLabel": "OpenAI",
-      "modelLabel": "tiktoken：cl100k_base",
-      "seriesLabel": "GPT 系列与 tiktoken 编码族",
+      "modelLabel": "GPT-3.5 / GPT-4",
+      "seriesLabel": "GPT 系列",
       "time": {
         "label": "作为编码实现公开（常用于新一代 chat / embedding）",
         "precision": "undisclosed"
@@ -150,7 +150,7 @@
       "sequenceInVendor": 5,
       "tokenizerFamily": "tiktoken-bpe",
       "tokenizerFamilyLabel": "tiktoken / BPE",
-      "tokenizerDetail": "BPE（tiktoken）",
+      "tokenizerDetail": "byte-level BPE (cl100k_base)",
       "vocabulary": {
         "display": "100k 级（explicit_n_vocab 未给；special token id 落在 100k+ 区间）"
       },
@@ -166,8 +166,8 @@
       "id": "openai-o200k-base",
       "vendorId": "openai",
       "vendorLabel": "OpenAI",
-      "modelLabel": "tiktoken：o200k_base / o200k_harmony",
-      "seriesLabel": "GPT 系列与 tiktoken 编码族",
+      "modelLabel": "GPT-4o / GPT-4.1 / GPT-4.5 / GPT-5 / o 系列",
+      "seriesLabel": "GPT 系列",
       "time": {
         "label": "作为编码实现公开（新一代更大词表编码族）",
         "precision": "undisclosed"
@@ -175,7 +175,7 @@
       "sequenceInVendor": 6,
       "tokenizerFamily": "tiktoken-bpe",
       "tokenizerFamilyLabel": "tiktoken / BPE",
-      "tokenizerDetail": "BPE（tiktoken）",
+      "tokenizerDetail": "byte-level BPE (o200k_base/o200k_harmony)",
       "vocabulary": {
         "display": "200k 级（explicit_n_vocab 未给；special token id 约 200k）"
       },
@@ -194,7 +194,7 @@
       "modelLabel": "mBERT（multilingual BERT）",
       "seriesLabel": "BERT / T5 / PaLM / Gemma",
       "time": {
-        "label": "2018（模型卡）",
+        "label": "2018",
         "year": 2018,
         "precision": "year"
       },
@@ -221,7 +221,7 @@
       "modelLabel": "T5",
       "seriesLabel": "BERT / T5 / PaLM / Gemma",
       "time": {
-        "label": "2019-10-23（arXiv）",
+        "label": "2019-10-23",
         "year": 2019,
         "month": 10,
         "day": 23,
@@ -230,14 +230,14 @@
       "sequenceInVendor": 2,
       "tokenizerFamily": "sentencepiece",
       "tokenizerFamilyLabel": "SentencePiece",
-      "tokenizerDetail": "SentencePiece（用于生成 WordPiece tokens）",
+      "tokenizerDetail": "SentencePiece",
       "vocabulary": {
         "display": "32,000 wordpieces",
         "value": 32000
       },
       "byteLevel": "undisclosed",
       "multilingual": "partial",
-      "preprocessing": "用 SentencePiece；词表训练时混入非英文数据；明确指出固定词表限制语言集合",
+      "preprocessing": "词表训练时混入非英文数据；明确指出固定词表限制语言集合",
       "disclosure": "public",
       "summary": "“32k 级”SentencePiece 词表成为后续多代 encoder-decoder 的基线，同时暴露“语言集合需先验指定”的局限。",
       "changeFromPrevious": "从 WordPiece 过渡到 SentencePiece，强调从原始文本直接训练子词单元的一致性。",
@@ -250,7 +250,7 @@
       "modelLabel": "mT5",
       "seriesLabel": "BERT / T5 / PaLM / Gemma",
       "time": {
-        "label": "2021（论文）",
+        "label": "2021",
         "year": 2021,
         "precision": "year"
       },
@@ -259,7 +259,7 @@
       "tokenizerFamilyLabel": "SentencePiece",
       "tokenizerDetail": "SentencePiece",
       "vocabulary": {
-        "display": "250,000 wordpieces",
+        "display": "250,000+",
         "value": 250000
       },
       "byteLevel": "yes",
@@ -277,7 +277,7 @@
       "modelLabel": "PaLM（Pathways Language Model）",
       "seriesLabel": "BERT / T5 / PaLM / Gemma",
       "time": {
-        "label": "2022-04（论文公开）",
+        "label": "2022-04",
         "year": 2022,
         "month": 4,
         "precision": "month"
@@ -305,7 +305,7 @@
       "modelLabel": "PaLM 2",
       "seriesLabel": "BERT / T5 / PaLM / Gemma",
       "time": {
-        "label": "2023-05-16（技术报告）",
+        "label": "2023-05-16",
         "year": 2023,
         "month": 5,
         "day": 16,
@@ -314,7 +314,7 @@
       "sequenceInVendor": 5,
       "tokenizerFamily": "undisclosed",
       "tokenizerFamilyLabel": "未公开",
-      "tokenizerDetail": "未公开（报告未披露 tokenizer 细节）",
+      "tokenizerDetail": "未披露",
       "vocabulary": {
         "display": "未公开"
       },
@@ -323,7 +323,7 @@
       "preprocessing": "未公开",
       "disclosure": "undisclosed",
       "summary": "公开资料侧重数据、目标与评测，tokenizer 细节需另寻实现或后续披露。",
-      "changeFromPrevious": "在数据集层面只保留“未公开”的状态，不追加算法或词表推测。",
+      "changeFromPrevious": "不知道",
       "sourceSection": "Google（含 BERT/T5/PaLM/Pathways 相关公开线索）"
     },
     {
@@ -333,7 +333,7 @@
       "modelLabel": "Gemma（开源模型家族）",
       "seriesLabel": "BERT / T5 / PaLM / Gemma",
       "time": {
-        "label": "2024-08-15（官方博文）",
+        "label": "2024-08-15",
         "year": 2024,
         "month": 8,
         "day": 15,
@@ -349,7 +349,7 @@
       },
       "byteLevel": "undisclosed",
       "multilingual": "undisclosed",
-      "preprocessing": "未公开（博文未展开 normalization 等）",
+      "preprocessing": "未公开",
       "disclosure": "partial",
       "summary": "延续“256k 级”词表路线，公开说明 tokenizer 基于 SentencePiece。",
       "changeFromPrevious": "延续 Google 在大词表 SentencePiece 路线上的公开线索。",
@@ -362,7 +362,7 @@
       "modelLabel": "Claude（首代商业发布）",
       "seriesLabel": "Claude 系列",
       "time": {
-        "label": "2023-03-14（媒体报道/发布）",
+        "label": "2023-03-14",
         "year": 2023,
         "month": 3,
         "day": 14,
@@ -371,7 +371,7 @@
       "sequenceInVendor": 1,
       "tokenizerFamily": "undisclosed",
       "tokenizerFamilyLabel": "未公开",
-      "tokenizerDetail": "未公开（完整 tokenizer 未披露）",
+      "tokenizerDetail": "未披露",
       "vocabulary": {
         "display": "未公开"
       },
@@ -380,7 +380,7 @@
       "preprocessing": "未公开",
       "disclosure": "undisclosed",
       "summary": "官方发布侧重产品与能力，未披露 tokenizer。",
-      "changeFromPrevious": "在数据集层面仅保留“未公开”事实，不补充任何算法推测。",
+      "changeFromPrevious": "不知道",
       "sourceSection": "Anthropic（Claude 系列）"
     },
     {
@@ -390,7 +390,7 @@
       "modelLabel": "Claude 2",
       "seriesLabel": "Claude 系列",
       "time": {
-        "label": "2023-07-11（官方博文）",
+        "label": "2023-07-11",
         "year": 2023,
         "month": 7,
         "day": 11,
@@ -399,7 +399,7 @@
       "sequenceInVendor": 2,
       "tokenizerFamily": "undisclosed",
       "tokenizerFamilyLabel": "未公开",
-      "tokenizerDetail": "未公开（完整 tokenizer 未披露）",
+      "tokenizerDetail": "未披露",
       "vocabulary": {
         "display": "未公开"
       },
@@ -408,33 +408,7 @@
       "preprocessing": "未公开",
       "disclosure": "undisclosed",
       "summary": "仍未披露 tokenizer；产品层强调性能与“更长记忆”。",
-      "changeFromPrevious": "相较首代 Claude，公开粒度仍然没有给出完整 tokenizer 规格。",
-      "sourceSection": "Anthropic（Claude 系列）"
-    },
-    {
-      "id": "anthropic-old-tokenizer",
-      "vendorId": "anthropic",
-      "vendorLabel": "Anthropic",
-      "modelLabel": "旧模型 token 计数器（@anthropic-ai/tokenizer）",
-      "seriesLabel": "Claude 系列",
-      "time": {
-        "label": "公开于 GitHub（适用于旧模型）",
-        "precision": "undisclosed"
-      },
-      "sequenceInVendor": 3,
-      "tokenizerFamily": "tiktoken-bpe",
-      "tokenizerFamilyLabel": "tiktoken / BPE",
-      "tokenizerDetail": "tiktoken/lite BPE（官方代码）",
-      "vocabulary": {
-        "display": "64,739",
-        "value": 64739
-      },
-      "byteLevel": "partial",
-      "multilingual": "undisclosed",
-      "preprocessing": "text.normalize('NFKC')；pat_str（regex 预分词）；special tokens 显式定义",
-      "disclosure": "public",
-      "summary": "官方公开“旧版估算 tokenizer”，并声明 Claude 3 起不再准确。",
-      "changeFromPrevious": "这是 Anthropic 公开可见的旧版估算实现，但不能外推到 Claude 3+。",
+      "changeFromPrevious": "不知道",
       "sourceSection": "Anthropic（Claude 系列）"
     },
     {
@@ -444,7 +418,7 @@
       "modelLabel": "Claude 3（Haiku / Sonnet / Opus）",
       "seriesLabel": "Claude 系列",
       "time": {
-        "label": "2024-03-04（官方/路透）",
+        "label": "2024-03-04",
         "year": 2024,
         "month": 3,
         "day": 4,
@@ -453,7 +427,7 @@
       "sequenceInVendor": 4,
       "tokenizerFamily": "undisclosed",
       "tokenizerFamilyLabel": "未公开",
-      "tokenizerDetail": "未公开（旧 tokenizer 明确“不再准确”）",
+      "tokenizerDetail": "未披露",
       "vocabulary": {
         "display": "未公开"
       },
@@ -461,18 +435,18 @@
       "multilingual": "undisclosed",
       "preprocessing": "未公开",
       "disclosure": "undisclosed",
-      "summary": "Claude 3 起 tokenizer 未公开，建议依赖 API usage / token counting。",
-      "changeFromPrevious": "从这一代开始，旧版公开 tokenizer 已明确不再准确。",
+      "summary": "Claude 3 起 tokenizer 未公开，官方建议依赖 API usage / token counting来计算token数。",
+      "changeFromPrevious": "不知道",
       "sourceSection": "Anthropic（Claude 系列）"
     },
     {
       "id": "anthropic-claude-3-5",
       "vendorId": "anthropic",
       "vendorLabel": "Anthropic",
-      "modelLabel": "Claude 3.5 Sonnet",
+      "modelLabel": "Claude 3.5 / 3.7 / 4 / 4.5 / 4.6 (Haiku / Sonnet / Opus)",
       "seriesLabel": "Claude 系列",
       "time": {
-        "label": "2024-06-21（官方博文）",
+        "label": "2024-06-21",
         "year": 2024,
         "month": 6,
         "day": 21,
@@ -489,8 +463,8 @@
       "multilingual": "undisclosed",
       "preprocessing": "未公开",
       "disclosure": "undisclosed",
-      "summary": "同样未公开完整 tokenizer；应依赖官方 token counting 路线理解成本与上下文。",
-      "changeFromPrevious": "沿用 Claude 3 之后的“公开 token counting、未公开完整 tokenizer”格局。",
+      "summary": "同样未公开完整 tokenizer；需依赖官方 token counting 路线理解成本与上下文。",
+      "changeFromPrevious": "不知道",
       "sourceSection": "Anthropic（Claude 系列）"
     },
     {
@@ -500,7 +474,7 @@
       "modelLabel": "DeepSeek-V2",
       "seriesLabel": "开源 / 公开实现线索",
       "time": {
-        "label": "2024（arXiv）",
+        "label": "2024",
         "year": 2024,
         "precision": "year"
       },
@@ -515,18 +489,18 @@
       "multilingual": "undisclosed",
       "preprocessing": "未公开",
       "disclosure": "undisclosed",
-      "summary": "公开论文摘要强调 MoE / 长上下文等，tokenizer 信息需从模型仓库或实现进一步核对。",
-      "changeFromPrevious": "在当前数据集中只保留“摘要未披露 tokenizer 细节”的事实。",
+      "summary": "与 MoE / 长上下文等特点有交互作用",
+      "changeFromPrevious": "不知道",
       "sourceSection": "DeepSeek（开源/公开实现线索）"
     },
     {
       "id": "deepseek-public-tokenizer-impl",
       "vendorId": "deepseek",
       "vendorLabel": "DeepSeek",
-      "modelLabel": "DeepSeekTokenizer（公开代码实现片段）",
+      "modelLabel": "DeepSeek-V3 / R1",
       "seriesLabel": "开源 / 公开实现线索",
       "time": {
-        "label": "2024-07-04（文件时间线）",
+        "label": "2024-07-04",
         "year": 2024,
         "month": 7,
         "day": 4,
@@ -543,18 +517,18 @@
       "multilingual": "undisclosed",
       "preprocessing": "显式处理换行 token；对 SentencePiece 可能“吞空格”的边界做恢复；提供 encode / decode 可逆映射",
       "disclosure": "partial",
-      "summary": "体现出“可逆编码 + 空白 / 换行可控”的工程取向，但与主流 DeepSeek 大模型是否一致仍需核实。",
-      "changeFromPrevious": "相较论文摘要层面的缺口，这条线索至少给出了公开实现片段，但仍不能直接代表全部主模型。",
+      "summary": "可逆编码 + 空白 / 换行可控",
+      "changeFromPrevious": "不知道",
       "sourceSection": "DeepSeek（开源/公开实现线索）"
     },
     {
       "id": "zhipu-glm-family",
       "vendorId": "zhipu",
-      "vendorLabel": "智谱 AI",
+      "vendorLabel": "Zhipu AI",
       "modelLabel": "ChatGLM / ChatGLM2 / ChatGLM3 / GLM-4 等",
       "seriesLabel": "GLM 系列",
       "time": {
-        "label": "未在本次可核对资料中找到官方统一披露",
+        "label": "未知",
         "precision": "undisclosed"
       },
       "sequenceInVendor": 1,
@@ -568,25 +542,25 @@
       "multilingual": "undisclosed",
       "preprocessing": "未公开",
       "disclosure": "pending-verification",
-      "summary": "待验证项：公开资料多来自第三方复述或配置文件截取；需要以官方技术报告、模型仓库 tokenizer 文件或发布说明核对。",
-      "changeFromPrevious": "在当前数据集中不拆分各代 GLM 的 tokenizer 规格，统一保留为待验证状态。",
+      "summary": "开源系列模型，可直接参阅官方技术报告、模型仓库 tokenizer 文件或发布说明。",
+      "changeFromPrevious": "不知道",
       "sourceSection": "智谱（Zhipu/智谱AI，含 ChatGLM/GLM 系列）"
     },
     {
       "id": "qwen-early",
       "vendorId": "qwen",
-      "vendorLabel": "Qwen",
+      "vendorLabel": "Alibaba",
       "modelLabel": "Qwen（早期）",
-      "seriesLabel": "阿里 Qwen 系列",
+      "seriesLabel": "Qwen 系列",
       "time": {
-        "label": "2023（待核实）",
+        "label": "2023",
         "year": 2023,
         "precision": "year"
       },
       "sequenceInVendor": 1,
       "tokenizerFamily": "tiktoken-bpe",
       "tokenizerFamilyLabel": "tiktoken / BPE",
-      "tokenizerDetail": "tiktoken / Encoding（BPE）",
+      "tokenizerDetail": "BPE",
       "vocabulary": {
         "display": "151851（“real old vocab size”）",
         "value": 151851
@@ -596,17 +570,17 @@
       "preprocessing": "special tokens 与 mergeable_ranks（tiktoken 机制）",
       "disclosure": "partial",
       "summary": "公开 issue 记录了早期词表规模与后续对齐策略。",
-      "changeFromPrevious": "公开线索更多集中在工程实现与真实词表长度，而非完整论文式披露。",
+      "changeFromPrevious": "不知道",
       "sourceSection": "Qwen（阿里 Qwen 系列）"
     },
     {
       "id": "qwen-7b-14b",
       "vendorId": "qwen",
-      "vendorLabel": "Qwen",
+      "vendorLabel": "Alibaba",
       "modelLabel": "Qwen 7B / 14B",
-      "seriesLabel": "阿里 Qwen 系列",
+      "seriesLabel": "Qwen 系列",
       "time": {
-        "label": "2023-10（issue 时间线）",
+        "label": "2023-10",
         "year": 2023,
         "month": 10,
         "precision": "month"
@@ -614,7 +588,7 @@
       "sequenceInVendor": 2,
       "tokenizerFamily": "tiktoken-bpe",
       "tokenizerFamilyLabel": "tiktoken / BPE",
-      "tokenizerDetail": "tiktoken / Encoding（BPE）",
+      "tokenizerDetail": "BPE",
       "vocabulary": {
         "display": "151936（7B）、152064（14B）"
       },
@@ -629,18 +603,18 @@
     {
       "id": "qwen2",
       "vendorId": "qwen",
-      "vendorLabel": "Qwen",
+      "vendorLabel": "Alibaba",
       "modelLabel": "Qwen2",
-      "seriesLabel": "阿里 Qwen 系列",
+      "seriesLabel": "Qwen 系列",
       "time": {
-        "label": "2024（文档版本随库）",
+        "label": "2024",
         "year": 2024,
         "precision": "year"
       },
       "sequenceInVendor": 3,
       "tokenizerFamily": "undisclosed",
       "tokenizerFamilyLabel": "未公开",
-      "tokenizerDetail": "未在该页解释算法，但 vocab_size 默认 151936",
+      "tokenizerDetail": "未披露",
       "vocabulary": {
         "display": "151936（默认）",
         "value": 151936
@@ -650,7 +624,7 @@
       "preprocessing": "未公开",
       "disclosure": "partial",
       "summary": "在生态层面形成固定 vocab_size 约定值。",
-      "changeFromPrevious": "延续 Qwen 对硬件友好 vocab 尺寸的工程约定，但该页未展开算法细节。",
+      "changeFromPrevious": "延续 Qwen 对硬件友好 vocab 尺寸的工程约定",
       "sourceSection": "Qwen（阿里 Qwen 系列）"
     },
     {
@@ -676,27 +650,27 @@
       },
       "byteLevel": "undisclosed",
       "multilingual": "undisclosed",
-      "preprocessing": "未公开（README 仅给出 tokenizer 类型与词表规模）",
+      "preprocessing": "未公开",
       "disclosure": "partial",
       "summary": "大词表（2^17）+ SentencePiece；在模型卡中明确列出 vocab size 与 special tokens（如 pad / eos）。",
-      "changeFromPrevious": "在当前数据集中，xAI 可直接入轴的公开节点以 Grok-1 为主。",
+      "changeFromPrevious": "其为最早模型版本，后续版本实现细节均未披露",
       "sourceSection": "Grok（xAI，Grok-1）"
     },
     {
       "id": "mistral-v3-tokenizer",
       "vendorId": "mistral",
       "vendorLabel": "Mistral AI",
-      "modelLabel": "v3 tokenizer（传统 32k 路线）",
-      "seriesLabel": "开源模型与新一代 tokenizer 线索",
+      "modelLabel": "Mistral v3",
+      "seriesLabel": "Mistral 系列",
       "time": {
-        "label": "2024（大约时间）",
+        "label": "2024",
         "year": 2024,
         "precision": "year"
       },
       "sequenceInVendor": 1,
       "tokenizerFamily": "bpe",
       "tokenizerFamilyLabel": "BPE",
-      "tokenizerDetail": "BPE（文档描述包含 bytes 与 merged chars）",
+      "tokenizerDetail": "BPE",
       "vocabulary": {
         "display": "32k vocab + 768 control tokens；其中包含 256 bytes"
       },
@@ -704,25 +678,25 @@
       "multilingual": "undisclosed",
       "preprocessing": "未公开",
       "disclosure": "partial",
-      "summary": "以 32k 为主体，显式纳入 256 bytes，兼顾可逆性与压缩率。",
-      "changeFromPrevious": "当前可核对公开片段更偏向“词表规模 + 控制 token”层面的披露。",
+      "summary": "传统 32k 路线：显式纳入 256 bytes，兼顾可逆性与压缩率。",
+      "changeFromPrevious": "不知道",
       "sourceSection": "Mistral AI（开源模型与新一代 tokenizer 线索）"
     },
     {
       "id": "mistral-tekken",
       "vendorId": "mistral",
       "vendorLabel": "Mistral AI",
-      "modelLabel": "v3 “tekken” tokenizer（大词表路线）",
-      "seriesLabel": "开源模型与新一代 tokenizer 线索",
+      "modelLabel": "Mistral v3 “tekken”",
+      "seriesLabel": "Mistral 系列",
       "time": {
-        "label": "2024（大约时间）",
+        "label": "2024",
         "year": 2024,
         "precision": "year"
       },
       "sequenceInVendor": 2,
       "tokenizerFamily": "undisclosed",
       "tokenizerFamilyLabel": "未公开",
-      "tokenizerDetail": "未在片段中展开算法细节",
+      "tokenizerDetail": "未披露",
       "vocabulary": {
         "display": "130k vocab + 1k control tokens"
       },
@@ -730,18 +704,18 @@
       "multilingual": "undisclosed",
       "preprocessing": "未公开",
       "disclosure": "partial",
-      "summary": "通过更大词表降低切分碎片化，倾向提升多语 / 代码符号覆盖（需进一步核对完整文档）。",
-      "changeFromPrevious": "相较传统 32k 路线，更强调大词表，但公开片段未展开算法与预处理细节。",
+      "summary": "大词表路线：通过更大词表降低切分碎片化，倾向提升多语 / 代码符号覆盖（需进一步核对完整文档）。",
+      "changeFromPrevious": "相较传统 32k 路线，更强调大词表。",
       "sourceSection": "Mistral AI（开源模型与新一代 tokenizer 线索）"
     },
     {
       "id": "meta-llama-byte-level-bpe",
       "vendorId": "meta",
       "vendorLabel": "Meta",
-      "modelLabel": "Llama（以 Llama 2 文档为代表）",
+      "modelLabel": "Llama / Llama 2",
       "seriesLabel": "LLaMA 系列",
       "time": {
-        "label": "2023-07-18（文档）",
+        "label": "2023-07-18",
         "year": 2023,
         "month": 7,
         "day": 18,
@@ -750,16 +724,16 @@
       "sequenceInVendor": 1,
       "tokenizerFamily": "byte-level-bpe",
       "tokenizerFamilyLabel": "byte-level BPE",
-      "tokenizerDetail": "byte-level BPE（LlamaTokenizer）",
+      "tokenizerDetail": "byte-level BPE",
       "vocabulary": {
-        "display": "文档页未给出精确值（生态中常见 32k 路线）"
+        "display": "~32k"
       },
       "byteLevel": "yes",
       "multilingual": "undisclosed",
-      "preprocessing": "文档明确“no normalization”",
+      "preprocessing": "no normalization",
       "disclosure": "partial",
       "summary": "采用 ByteFallback 与无 normalization，减少输入被改写；更贴近“可逆 / 少预处理”路线。",
-      "changeFromPrevious": "在当前数据集中以 Llama 2 文档作为 Meta 公开 tokenizer 线索的代表。",
+      "changeFromPrevious": "不知道",
       "sourceSection": "Meta（LLaMA 系列）"
     },
     {
@@ -769,14 +743,14 @@
       "modelLabel": "Llama 3",
       "seriesLabel": "LLaMA 系列",
       "time": {
-        "label": "2024（官方博文）",
+        "label": "2024",
         "year": 2024,
         "precision": "year"
       },
       "sequenceInVendor": 2,
       "tokenizerFamily": "undisclosed",
       "tokenizerFamilyLabel": "未公开",
-      "tokenizerDetail": "新 tokenizer（官方称 128K）",
+      "tokenizerDetail": "byte-level BPE",
       "vocabulary": {
         "display": "128K"
       },
@@ -785,7 +759,7 @@
       "preprocessing": "未公开",
       "disclosure": "partial",
       "summary": "官方将“128K tokenizer 带来更高编码效率”列为关键改进点；社区 issue 指出从 SentencePiece 转向 tiktoken 并扩到 128k。",
-      "changeFromPrevious": "公开表述的重点从“少预处理 / ByteFallback”转到“128K tokenizer 与编码效率提升”。",
+      "changeFromPrevious": "少预处理; ByteFallback; 编码效率提升",
       "sourceSection": "Meta（LLaMA 系列）"
     }
   ]

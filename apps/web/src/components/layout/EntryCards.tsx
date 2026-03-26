@@ -12,13 +12,13 @@ const entries = [
   },
   {
     to: '/token-lab',
-    title: '观察文本如何变成 token 和向量',
+    title: '观察文本如何变成词元',
     body: '输入一句中文，实时对比不同 encoding 的 token 数、token IDs 与向量链路。',
     icon: ScanSearch,
   },
   {
     to: '/timeline',
-    title: '浏览主流模型的演化路线',
+    title: '浏览主流模型的分析器演化路线',
     body: '按厂商查看 tokenizer、embedding 与整体能力是如何逐步变化的。',
     icon: History,
   },

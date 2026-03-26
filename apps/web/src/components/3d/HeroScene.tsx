@@ -3,6 +3,9 @@ import { Canvas } from '@react-three/fiber'
 
 type Point3D = [number, number, number]
 
+const HERO_BACKGROUND_VIDEO_URL =
+  'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260302_085640_276ea93b-d7da-4418-a09b-2aa5b490e838.mp4'
+
 const tokenPoints: Point3D[] = [
   [-2.9, 0.9, 0.15],
   [-2.15, 0.15, 0],
@@ -272,9 +275,26 @@ function FlowNodes() {
 
 export function HeroScene() {
   return (
-    <div className="glass-panel glass-panel-strong h-[26rem] overflow-hidden rounded-[2rem]">
-      <Canvas camera={{ position: [0, 0, 8], fov: 45 }}>
-        <color attach="background" args={['#f9fdff']} />
+    <div className="glass-panel glass-panel-strong relative h-[26rem] overflow-hidden rounded-[2rem]">
+      <video
+        autoPlay
+        className="absolute inset-0 h-full w-full object-cover"
+        loop
+        muted
+        playsInline
+        preload="metadata"
+      >
+        <source src={HERO_BACKGROUND_VIDEO_URL} type="video/mp4" />
+      </video>
+      <div
+        aria-hidden="true"
+        className="absolute inset-0"
+        style={{
+          background:
+            'linear-gradient(180deg, rgba(255,255,255,0) 26.416%, rgb(255,255,255) 66.943%)',
+        }}
+      />
+      <Canvas camera={{ position: [0, 0, 8], fov: 45 }} className="relative z-10" gl={{ alpha: true }}>
         <fog attach="fog" args={['#f9fdff', 8.5, 15]} />
         <ambientLight intensity={1.45} />
         <directionalLight intensity={1.9} position={[5, 5, 5]} />

@@ -18,7 +18,7 @@ const entries = [
   },
   {
     to: '/timeline',
-    title: '浏览主流模型的分析器演化路线',
+    title: '浏览主流模型的分词器演化路线',
     body: '按厂商查看 tokenizer、embedding 与整体能力是如何逐步变化的。',
     icon: History,
   },
